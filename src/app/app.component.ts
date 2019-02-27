@@ -3,7 +3,14 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <nav id="menu">
+    <main>
+      <div class="content">
+        <img src="assets/logo.png" />
+        <button class="start"></button>
+      </div>
+    </main>
+
+    <nav>
       <app-button [icon]="'treasure'"></app-button>
       <app-button [icon]="'shop'"></app-button>
       <app-button [icon]="'envelope'"></app-button>
