@@ -3,11 +3,15 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <app-button [icon]="'treasure'"></app-button>
-    <router-outlet></router-outlet>
+    <nav id="menu">
+      <app-button [icon]="'treasure'"></app-button>
+      <app-button [icon]="'shop'"></app-button>
+      <app-button [icon]="'envelope'"></app-button>
+      <app-button [icon]="'mission'"></app-button>
+      <app-button [icon]="'trophy'"></app-button>
+      <app-button [icon]="'setting'"></app-button>
+    </nav>
   `,
-  styles: []
+  styleUrls: ['app.component.scss']
 })
-export class AppComponent {
-  title = 'game';
-}
+export class AppComponent {}

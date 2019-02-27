@@ -1,0 +1,27 @@
+:host {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'menu';
+  grid-template-rows: 200px 1fr 200px;
+  height: 100%;
+  justify-items: center;
+}
+
+#header {
+  grid-area: header;
+}
+
+#main {
+  grid-area: main;
+}
+
+#menu {
+  grid-area: menu;
+  display: grid;
+  grid-template-columns: repeat(6, 100px);
+  grid-gap: 3rem;
+  justify-items: center;
+  align-items: center;
+}
