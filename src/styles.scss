@@ -25,3 +25,19 @@ img {
 button {
   all: unset;
 }
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+p {
+  font-size: 18px;
+  font-weight: bold;
+}

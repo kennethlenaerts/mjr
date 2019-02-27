@@ -1,0 +1,56 @@
+:host {
+  background: url('src/assets/frames/frame_user.png');
+  background-repeat: no-repeat;
+  width: 430px;
+  height: 160px;
+  position: relative;
+  display: block;
+}
+
+.level {
+  color: white;
+  position: absolute;
+  top: 92px;
+  left: 127px;
+}
+
+.bar-hp-container {
+  left: 159px;
+  top: 28px;
+  position: absolute;
+
+  .bar-hp {
+    height: 22px;
+    width: 100px;
+    background: url('src/assets/bars/bar_hp_middle.png');
+    position: relative;
+
+    &::before,
+    &::after {
+      display: block;
+      content: '';
+      height: 22px;
+      position: absolute;
+      top: 0;
+    }
+
+    &::before {
+      background: url('src/assets/bars/bar_hp_left.png');
+      left: -5px;
+      width: 5px;
+    }
+
+    &::after {
+      background: url('src/assets/bars/bar_hp_right.png');
+      width: 10px;
+      right: -10px;
+    }
+  }
+
+  .value {
+    color: white;
+    top: -5px;
+    left: 78px;
+    position: absolute;
+  }
+}

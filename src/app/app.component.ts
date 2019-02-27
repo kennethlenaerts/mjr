@@ -3,6 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
+    <header>
+      <app-user-stats></app-user-stats>
+      <div></div>
+    </header>
+
     <main>
       <div class="content">
         <img src="assets/logo.png" />
