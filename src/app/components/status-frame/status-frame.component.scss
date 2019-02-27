@@ -1,0 +1,32 @@
+:host {
+  width: 250px;
+  height: 75px;
+  background: url('src/assets/frames/frame_status.png');
+  background-repeat: no-repeat;
+  position: relative;
+  background-size: contain;
+  display: grid;
+}
+
+img {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  width: 69px;
+}
+
+button.add {
+  background: url('src/assets/buttons/btn_add.png');
+  width: 55px;
+  height: 55px;
+  background-size: contain;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  align-self: center;
+}

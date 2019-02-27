@@ -19,6 +19,13 @@ header {
   align-items: center;
   grid-template-columns: auto 1fr;
   width: 100%;
+
+  .status {
+    justify-self: end;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 1rem;
+  }
 }
 
 main {
