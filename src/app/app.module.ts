@@ -4,9 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { components } from './components';
+
+// prettier-ignore
 @NgModule({
   declarations: [
-    AppComponent
+    ...components,
+    AppComponent,
   ],
   imports: [
     BrowserModule,

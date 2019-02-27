@@ -1,0 +1,31 @@
+button {
+  all: unset;
+  box-shadow: 6px 6px 5px 5px rgba(0, 0, 0, 0.2),
+    4px 4px 5px rgba(0, 0, 0, 0.2);
+  transition: all 250ms ease-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(4px);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+  }
+}
+
+.menu {
+  height: 150px;
+  width: 150px;
+  border-radius: 30px;
+  background: url('src/assets/buttons/btn_menu.png');
+  background-repeat: no-repeat;
+
+  display: grid;
+  justify-items: center;
+  align-items: center;
+
+}
+
+img {
+  margin: auto;
+  width: 70%;
+  height: auto;
+}
