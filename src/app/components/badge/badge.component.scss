@@ -1,0 +1,22 @@
+button {
+  height: 35px;
+  width: 35px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+
+  h3 {
+    position: absolute;
+    top: -9px;
+    left: 7px;
+    color: white;
+  }
+}
+
+$types: alert new count;
+
+@each $type in $types {
+  .#{ $type } {
+    background-image: url('src/assets/badges/badge_#{ $type }.png');
+  }
+}

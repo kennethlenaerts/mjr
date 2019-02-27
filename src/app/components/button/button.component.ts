@@ -4,6 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-button',
   template: `
     <button class="menu">
+      <app-badge *ngIf="badge" [type]="badge" [count]="count"></app-badge>
       <img [src]="'assets/icons/common_icon_' + icon + '.png'" />
     </button>
   `,
@@ -12,6 +13,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ButtonComponent implements OnInit {
   @Input() type: string;
   @Input() icon: string;
+  @Input() badge: string;
+  @Input() count: string;
 
   constructor() {}
 

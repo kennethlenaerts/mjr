@@ -21,9 +21,9 @@ import { Component } from '@angular/core';
 
     <nav>
       <app-button icon="treasure"></app-button>
-      <app-button icon="shop"></app-button>
-      <app-button icon="envelope"></app-button>
-      <app-button icon="mission"></app-button>
+      <app-button icon="shop" badge="new"></app-button>
+      <app-button icon="envelope" badge="count" count="5"></app-button>
+      <app-button icon="mission" badge="alert"></app-button>
       <app-button icon="trophy"></app-button>
       <app-button icon="setting"></app-button>
     </nav>
