@@ -4,14 +4,14 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-status-frame',
   template: `
     <img [src]="'assets/icons/common_icon_' + icon + '.png'" />
-    <button class="add"></button>
-    <h2>50</h2>
+    <app-button type="add"></app-button>
+    <h2>{{ value }}</h2>
   `,
   styleUrls: ['status-frame.component.scss']
 })
 export class StatusFrameComponent implements OnInit {
+  @Input() value: string | number;
   @Input() icon: string;
-  constructor() {}
 
   ngOnInit() {}
 }

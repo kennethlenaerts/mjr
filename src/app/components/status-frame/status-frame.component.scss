@@ -10,19 +10,15 @@
 
 img {
   position: absolute;
-  top: 8px;
+  top: 4px;
   left: 12px;
   width: 69px;
 }
 
-button.add {
-  background: url('src/assets/buttons/btn_add.png');
-  width: 55px;
-  height: 55px;
-  background-size: contain;
+app-button {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 15px;
+  top: 7px;
 }
 
 h2 {

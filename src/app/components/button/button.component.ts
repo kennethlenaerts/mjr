@@ -3,10 +3,12 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-button',
   template: `
-    <button class="menu">
+    <button *ngIf="type === 'menu'" class="menu">
       <app-badge *ngIf="badge" [type]="badge" [count]="count"></app-badge>
       <img [src]="'assets/icons/common_icon_' + icon + '.png'" />
     </button>
+
+    <button *ngIf="type === 'add'" class="add"></button>
   `,
   styleUrls: ['button.component.scss']
 })

@@ -1,34 +1,43 @@
-.menu {
-  box-shadow: 6px 6px 5px 5px rgba(0, 0, 0, 0.2),
-    4px 4px 5px rgba(0, 0, 0, 0.2);
+button {
+  box-shadow: 6px 6px 0px 2px rgba(0, 0, 0, 0.4), 4px 4px 5px rgba(0, 0, 0, 0.2);
   transition: all 250ms ease-out;
-  height: 100px;
-  width: 100px;
-  border-radius: 20px;
-  background: url('src/assets/buttons/btn_menu.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  position: relative;
 
   &:hover {
+    box-shadow: 2px 4px 1px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transform: translateY(4px);
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+  }
+}
+
+.menu {
+  align-items: center;
+  background-image: url('src/assets/buttons/btn_menu.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 20px;
+  display: grid;
+  height: 100px;
+  justify-items: center;
+  position: relative;
+  width: 100px;
+
+  img {
+    height: auto;
+    margin: auto;
+    width: 70%;
   }
 
+  app-badge {
+    position: absolute;
+    right: -11px;
+    top: -15px;
+  }
 }
 
-img {
-  margin: auto;
-  width: 70%;
-  height: auto;
-}
-
-app-badge {
-  top: -15px;
-  right: -11px;
-  position: absolute;
+.add {
+  background-image: url('src/assets/buttons/btn_add.png');
+  background-size: contain;
+  height: 50px;
+  width: 50px;
+  border-radius: 7px;
 }

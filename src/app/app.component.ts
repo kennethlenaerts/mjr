@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
     <header>
       <app-user-stats></app-user-stats>
       <div class="status">
-        <app-status-frame icon="heart"></app-status-frame>
-        <app-status-frame icon="gold"></app-status-frame>
-        <app-status-frame icon="gem"></app-status-frame>
+        <app-status-frame icon="heart" value="50"></app-status-frame>
+        <app-status-frame icon="gold" value="150"></app-status-frame>
+        <app-status-frame icon="gem" value="0"></app-status-frame>
       </div>
     </header>
 
@@ -20,12 +20,17 @@ import { Component } from '@angular/core';
     </main>
 
     <nav>
-      <app-button icon="treasure"></app-button>
-      <app-button icon="shop" badge="new"></app-button>
-      <app-button icon="envelope" badge="count" count="5"></app-button>
-      <app-button icon="mission" badge="alert"></app-button>
-      <app-button icon="trophy"></app-button>
-      <app-button icon="setting"></app-button>
+      <app-button type="menu" icon="treasure"></app-button>
+      <app-button type="menu" icon="shop" badge="new"></app-button>
+      <app-button
+        type="menu"
+        icon="envelope"
+        badge="count"
+        count="5"
+      ></app-button>
+      <app-button type="menu" icon="mission" badge="alert"></app-button>
+      <app-button type="menu" icon="trophy"></app-button>
+      <app-button type="menu" icon="setting"></app-button>
     </nav>
   `,
   styleUrls: ['app.component.scss']
