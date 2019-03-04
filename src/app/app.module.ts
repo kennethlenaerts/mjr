@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { components } from './components';
+import { views } from './views';
 
 // prettier-ignore
 @NgModule({
   declarations: [
     ...components,
+    ...views,
     AppComponent,
   ],
   imports: [

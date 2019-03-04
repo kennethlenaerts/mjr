@@ -6,10 +6,7 @@ import { Component } from '@angular/core';
     <app-header></app-header>
 
     <main>
-      <div class="content">
-        <img src="assets/logo.png" />
-        <button class="start"></button>
-      </div>
+      <app-start></app-start>
     </main>
 
     <app-footer></app-footer>

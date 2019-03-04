@@ -21,44 +21,6 @@ main {
   display: grid;
   align-items: center;
   justify-items: center;
-
-  .content {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    grid-gap: 3rem;
-  }
-
-  button.start {
-    display: block;
-    background: url('src/assets/buttons/btn_start.png');
-    background-repeat: no-repeat;
-    width: 370px;
-    height: 230px;
-    position: relative;
-
-    &::after {
-      top: 0;
-      left: 0;
-      content: '';
-      position: absolute;
-      display: block;
-      background: url('src/assets/buttons/btn_start_hover.png');
-      background-repeat: no-repeat;
-      width: 370px;
-      height: 230px;
-      opacity: 0;
-      transition: all 250ms ease-out;
-    }
-
-    &:hover {
-      cursor: pointer;
-
-      &::after {
-        opacity: 1;
-      }
-    }
-  }
 }
 
 app-footer {
