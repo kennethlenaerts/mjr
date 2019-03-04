@@ -1,13 +1,14 @@
+import { Router, Event, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 interface Button {
-  routerLink?: string;
-  icon?: string;
   badge?: string;
+  icon?: string;
+  routerLink?: string;
   value?: string | number;
 }
 
-const buttons = [
+const buttons: Button[] = [
   {
     routerLink: '/',
     icon: 'mission'
@@ -17,23 +18,23 @@ const buttons = [
     icon: 'treasure'
   },
   {
-    routerLink: '/',
+    routerLink: '/shop',
     icon: 'shop',
     badge: 'new'
   },
   {
-    routerLink: '/',
+    routerLink: '/messages',
     icon: 'envelope',
     badge: 'count',
     value: '5'
   },
   {
-    routerLink: '/',
+    routerLink: '/achievements',
     icon: 'trophy',
     badge: 'alert'
   },
   {
-    routerLink: '/',
+    routerLink: '/settings',
     icon: 'setting'
   }
 ];
@@ -43,10 +44,11 @@ const buttons = [
   template: `
     <app-button
       *ngFor="let button of buttons"
+      [active]="url === button.routerLink"
       [routerLink]="button.routerLink"
       [icon]="button.icon"
-      [badge]="button.badge && button.badge"
-      [value]="button.value && button.value"
+      [badge]="button.badge"
+      [value]="button.value"
       type="menu"
     ></app-button>
   `,
@@ -56,11 +58,15 @@ export class FooterComponent implements OnInit {
   public url: string;
   public buttons: Button[];
 
+  constructor(private router: Router) {}
+
   ngOnInit() {
-    this.url = window.location.pathname
-      .split('')
-      .slice(1)
-      .join('');
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.url = event.url;
+      }
+    });
+    this.url = window.location.pathname;
 
     this.buttons = buttons;
   }
