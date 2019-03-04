@@ -1,3 +1,4 @@
+import { DialogComponent } from './dialog/dialog.component';
 import { BadgeComponent } from './badge/badge.component';
 import { ButtonComponent } from './button/button.component';
 import { FooterComponent } from './footer/footer.component';
@@ -11,6 +12,7 @@ export * from './footer/footer.component';
 export * from './header/header.component';
 export * from './status-frame/status-frame.component';
 export * from './user-stats/user-stats.component';
+export * from './dialog/dialog.component';
 
 // prettier-ignore
 export const components = [
@@ -20,4 +22,5 @@ export const components = [
   HeaderComponent,
   StatusFrameComponent,
   UserStatsComponent,
+  DialogComponent,
 ]

@@ -1,0 +1,80 @@
+.dialog {
+  background: #3e382b;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 18px;
+  box-shadow: var(--box-shadow);
+
+  .corner {
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+  }
+
+  .top-left {
+    background-image: url('src/assets/dialog/dialog_top_left.png');
+    top: 0;
+    left: 0;
+  }
+
+  .top-right {
+    background-image: url('src/assets/dialog/dialog_top_right.png');
+    top: 0;
+    right: 0;
+  }
+
+  .bottom-left {
+    background-image: url('src/assets/dialog/dialog_bottom_left.png');
+    bottom: 0;
+    left: 0;
+  }
+
+  .bottom-right {
+    background-image: url('src/assets/dialog/dialog_bottom_right.png');
+    bottom: 0;
+    right: 0;
+  }
+
+  .border {
+    background-size: contain;
+    position: absolute;
+
+    &.vertical {
+      width: calc(100% - 40px);
+      background-repeat: repeat-x;
+      height: 23px;
+      left: 20px;
+
+      &.top {
+        background-image: url('src/assets/dialog/dialog_vertical_top.png');
+        top: 0;
+      }
+
+      &.bottom {
+        background-image: url('src/assets/dialog/dialog_vertical_bottom.png');
+        bottom: 0;
+      }
+    }
+
+    &.horizontal {
+      height: calc(100% - 40px);
+      background-repeat: repeat-y;
+      width: 23px;
+      top: 20px;
+
+      &.left {
+        background-image: url('src/assets/dialog/dialog_horizontal_left.png');
+        left: 0;
+      }
+
+      &.right {
+        background-image: url('src/assets/dialog/dialog_horizontal_right.png');
+        right: 0;
+      }
+    }
+  }
+}

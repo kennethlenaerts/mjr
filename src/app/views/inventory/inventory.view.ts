@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   template: `
-    <h2>inventory</h2>
-  `
+    <app-dialog></app-dialog>
+  `,
+  styleUrls: ['inventory.view.scss']
 })
 export class InventoryView implements OnInit {
   ngOnInit() {}
