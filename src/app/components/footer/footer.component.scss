@@ -1,0 +1,8 @@
+:host {
+  grid-area: menu;
+  display: grid;
+  grid-template-columns: repeat(6, 100px);
+  grid-gap: 3rem;
+  justify-items: center;
+  align-items: center;
+}
