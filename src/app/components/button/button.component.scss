@@ -21,6 +21,10 @@ button {
   position: relative;
   width: 100px;
 
+  &.active {
+    background-image: url('src/assets/buttons/btn_menu_active.png');
+  }
+
   img {
     height: auto;
     margin: auto;

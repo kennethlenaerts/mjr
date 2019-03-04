@@ -1,26 +1,67 @@
 import { Component, OnInit } from '@angular/core';
 
+interface Button {
+  routerLink?: string;
+  icon?: string;
+  badge?: string;
+  value?: string | number;
+}
+
+const buttons = [
+  {
+    routerLink: '/',
+    icon: 'mission'
+  },
+  {
+    routerLink: '/inventory',
+    icon: 'treasure'
+  },
+  {
+    routerLink: '/',
+    icon: 'shop',
+    badge: 'new'
+  },
+  {
+    routerLink: '/',
+    icon: 'envelope',
+    badge: 'count',
+    value: '5'
+  },
+  {
+    routerLink: '/',
+    icon: 'trophy',
+    badge: 'alert'
+  },
+  {
+    routerLink: '/',
+    icon: 'setting'
+  }
+];
+
 @Component({
   selector: 'app-footer',
   template: `
-    <app-button [routerLink]="['/']" type="menu" icon="mission"></app-button>
     <app-button
-      [routerLink]="['/inventory']"
+      *ngFor="let button of buttons"
+      [routerLink]="button.routerLink"
+      [icon]="button.icon"
+      [badge]="button.badge && button.badge"
+      [value]="button.value && button.value"
       type="menu"
-      icon="treasure"
     ></app-button>
-    <app-button type="menu" icon="shop" badge="new"></app-button>
-    <app-button
-      type="menu"
-      icon="envelope"
-      badge="count"
-      count="5"
-    ></app-button>
-    <app-button type="menu" icon="trophy" badge="alert"></app-button>
-    <app-button type="menu" icon="setting"></app-button>
   `,
   styleUrls: ['footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  ngOnInit() {}
+  public url: string;
+  public buttons: Button[];
+
+  ngOnInit() {
+    this.url = window.location.pathname
+      .split('')
+      .slice(1)
+      .join('');
+
+    this.buttons = buttons;
+  }
 }
