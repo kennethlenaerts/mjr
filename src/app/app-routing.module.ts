@@ -4,8 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { StartView, InventoryView } from './views';
 
 const routes: Routes = [
-  { path: 'inventory', component: InventoryView },
-  { path: '', component: StartView },
+  {
+    path: 'inventory',
+    component: InventoryView,
+    data: { animation: 'inventory' }
+  },
+  { path: '', component: StartView, data: { animation: 'start' } },
   { path: '**', redirectTo: '/' }
 ];
 
