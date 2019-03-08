@@ -2,7 +2,38 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   template: `
-    <app-dialog></app-dialog>
+    <app-dialog>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+      <app-item icon="sword_A"></app-item>
+    </app-dialog>
   `,
   styleUrls: ['inventory.view.scss']
 })
