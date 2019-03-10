@@ -45,8 +45,8 @@ import { Component, OnInit } from '@angular/core';
       </div>
     </app-dialog>
   `,
-  styleUrls: ['inventory.view.scss']
+  styleUrls: ['inventory.component.scss']
 })
-export class InventoryView implements OnInit {
+export class InventoryComponent implements OnInit {
   ngOnInit() {}
 }

@@ -14,7 +14,7 @@ const buttons: Button[] = [
     icon: 'mission'
   },
   {
-    routerLink: '/inventory',
+    routerLink: '/info',
     icon: 'treasure'
   },
   {

@@ -1,14 +1,14 @@
 import { ShopView } from './shop/shop.view';
 import { StartView } from './start/start.view';
-import { InventoryView } from './inventory/inventory.view';
+import { InfoView } from './info/info.view';
 
 export * from './start/start.view';
-export * from './inventory/inventory.view';
+export * from './info/info.view';
 export * from './shop/shop.view';
 
 // prettier-ignore
 export const views = [
   StartView,
-  InventoryView,
+  InfoView,
   ShopView
 ];

@@ -8,11 +8,11 @@ import {
 } from '@angular/animations';
 
 export const slider = trigger('routeAnimations', [
-  transition('start => inventory', slideTo('right')),
+  transition('start => info', slideTo('right')),
   transition('start => shop', slideTo('right')),
-  transition('inventory => start', slideTo('left')),
-  transition('inventory => shop', slideTo('right')),
-  transition('shop => inventory', slideTo('left')),
+  transition('info => start', slideTo('left')),
+  transition('info => shop', slideTo('right')),
+  transition('shop => info', slideTo('left')),
   transition('shop => start', slideTo('left')),
   transition('* => start', [
     query(':enter, :leave', [
