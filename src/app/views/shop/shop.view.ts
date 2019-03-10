@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   template: `
-    <app-dialog title="Shop"></app-dialog>
+    <app-dialog title="Shop">
+      <app-inventory title="Buy" [items]="items" [shop]="true"></app-inventory>
+    </app-dialog>
     <app-dialog title="inventory">
-      <app-inventory [items]="items" [placeholders]="false"></app-inventory>
+      <app-inventory title="Sell" [items]="items" [shop]="true"></app-inventory>
     </app-dialog>
   `,
   styleUrls: ['shop.view.scss']

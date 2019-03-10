@@ -28,6 +28,11 @@
   width: 90%;
   margin: auto;
 
+  &.shop {
+
+    grid-template-columns: auto 1fr;
+  }
+
   .total {
     background-color: var(--color-backdrop);
     padding: 0rem 1rem;

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <app-dialog title="Info">
       <div class="content">
-        <app-inventory [items]="items"></app-inventory>
+        <app-inventory title="Inventory" [items]="items"></app-inventory>
       </div>
     </app-dialog>
   `,

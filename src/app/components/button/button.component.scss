@@ -1,4 +1,5 @@
-button {
+button,
+a {
   box-shadow: var(--box-shadow);
   transition: var(--transition);
 
@@ -66,4 +67,24 @@ button {
   &.item-lock {
     background-image: url('src/assets/buttons/btn_inventory_item_lock.png');
   }
+}
+
+.shop {
+  background-image: url('src/assets/buttons/btn_brown.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 44px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-items: center;
+  align-items: center;
+  border-radius: 8px;
+
+  img {
+    margin-left: 6px;
+    height: 35px;
+    width: auto;
+  }
+
 }
