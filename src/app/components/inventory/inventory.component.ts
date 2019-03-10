@@ -12,22 +12,25 @@ import { Component, OnInit, Input } from '@angular/core';
     <div class="items">
       <app-item *ngFor="let item of items" [icon]="item"></app-item>
 
-      <app-button
-        *ngFor="let number of [1, 2, 3, 4, 5]"
-        type="inventory"
-        icon="item-add"
-      ></app-button>
+      <ng-container *ngIf="placeholders">
+        <app-button
+          *ngFor="let number of [1, 2, 3, 4, 5]"
+          type="inventory"
+          icon="item-add"
+        ></app-button>
 
-      <app-button
-        *ngFor="let number of [1, 2, 3, 4, 5]"
-        type="inventory"
-        icon="item-lock"
-      ></app-button>
+        <app-button
+          *ngFor="let number of [1, 2, 3, 4, 5]"
+          type="inventory"
+          icon="item-lock"
+        ></app-button>
+      </ng-container>
     </div>
   `,
   styleUrls: ['inventory.component.scss']
 })
 export class InventoryComponent implements OnInit {
   @Input() public items: string[];
+  @Input() public placeholders: boolean = true;
   ngOnInit() {}
 }
