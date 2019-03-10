@@ -1,6 +1,9 @@
 :host {
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-rows: 75px auto;
+  margin-top: 50px;
   display: block;
 }
 
@@ -15,13 +18,6 @@
 //   margin-top: 50px;
 //   width: 90%;
 // }
-
-
-.content {
-  display: grid;
-  grid-template-rows: 75px auto;
-  margin-top: 50px;
-}
 
 .amount {
   display: grid;
@@ -40,8 +36,9 @@
 }
 
 .items {
+  justify-items: center;
   display: grid;
-  grid-gap: 3rem;
+  grid-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(100px, auto));
   grid-template-rows: repeat(auto-fill, minmax(100px, auto));
   margin-bottom: 50px;

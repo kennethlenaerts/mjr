@@ -3,6 +3,15 @@
   height: 100%;
   display: block;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   grid-gap: 2rem;
+  grid-template-areas: 'player-stats inventory';
+}
+
+app-inventory {
+  grid-area: inventory;
 }

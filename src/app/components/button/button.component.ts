@@ -9,6 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
     </button>
 
     <button *ngIf="type === 'add'" class="add"></button>
+
+    <button
+      *ngIf="type === 'inventory'"
+      [class]="'inventory' + ' ' + icon"
+    ></button>
   `,
   styleUrls: ['button.component.scss']
 })

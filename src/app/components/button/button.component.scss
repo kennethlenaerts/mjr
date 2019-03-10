@@ -45,3 +45,25 @@ button {
   width: 50px;
   border-radius: 7px;
 }
+
+.inventory {
+  box-shadow: none;
+  background-size: contain;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+
+  &:hover {
+    box-shadow: none;
+    cursor: pointer;
+    transform: none;
+  }
+
+  &.item-add {
+    background-image: url('src/assets/buttons/btn_inventory_item_add.png');
+  }
+
+  &.item-lock {
+    background-image: url('src/assets/buttons/btn_inventory_item_lock.png');
+  }
+}
