@@ -7,9 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
     <app-dialog-frame></app-dialog-frame>
 
     <div class="container">
-      <div class="content">
-        <ng-content></ng-content>
-      </div>
+      <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['dialog.component.scss']

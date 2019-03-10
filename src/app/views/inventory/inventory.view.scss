@@ -3,3 +3,50 @@
   height: 100%;
   display: block;
 }
+
+// .content {
+//   display: grid;
+//   grid-gap: 6rem;
+//   grid-template-columns: repeat(auto-fill, minmax(100px, auto));
+//   grid-template-rows: repeat(auto-fill, minmax(100px, auto));
+//   margin-bottom: 50px;
+//   margin-left: auto;
+//   margin-right: auto;
+//   margin-top: 50px;
+//   width: 90%;
+// }
+
+
+.content {
+  display: grid;
+  grid-template-rows: 100px auto;
+}
+
+.amount {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 2rem;
+
+  .total {
+    background-color: var(--color-backdrop);
+    padding: 0rem 1rem;
+    border-radius: 2rem;
+  }
+
+}
+
+
+
+.items {
+  display: grid;
+  grid-gap: 6rem;
+  grid-template-columns: repeat(auto-fill, minmax(100px, auto));
+  grid-template-rows: repeat(auto-fill, minmax(100px, auto));
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  width: 90%;
+}

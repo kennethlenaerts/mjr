@@ -23,15 +23,3 @@ app-dialog-title {
   width: calc(100% - 46px);
   z-index: 1;
 }
-
-.content {
-  display: grid;
-  grid-gap: 6rem;
-  grid-template-columns: repeat(auto-fill, minmax(100px, auto));
-  grid-template-rows: repeat(auto-fill, minmax(100px, auto));
-  margin-bottom: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-  width: 90%;
-}
