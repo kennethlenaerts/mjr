@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dialog',
   template: `
+    <app-dialog-title [value]="title"></app-dialog-title>
     <app-dialog-frame></app-dialog-frame>
 
     <div class="container">
@@ -14,5 +15,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
+  @Input() public title: string | number;
   ngOnInit() {}
 }

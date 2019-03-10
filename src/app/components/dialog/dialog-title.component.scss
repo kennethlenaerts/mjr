@@ -1,0 +1,36 @@
+:host {
+  --height: 60px;
+
+  background-image: url('src/assets/dialog/dialog_title_middle.png');
+  background-size: contain;
+  height: var(--height);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: relative;
+  justify-self: center;
+  display: grid;
+  align-items: center;
+
+  &:after,
+  &:before {
+    display: block;
+    content: '';
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: var(--height);
+    width: 190px;
+    position: absolute;
+    top: 0;
+  }
+
+  &:before {
+    background-position-x: right;
+    left: -190px;
+    background-image: url('src/assets/dialog/dialog_title_left.png');
+  }
+
+  &:after {
+    right: -190px;
+    background-image: url('src/assets/dialog/dialog_title_right.png');
+  }
+}

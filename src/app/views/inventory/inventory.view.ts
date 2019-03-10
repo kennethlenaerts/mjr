@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   template: `
-    <app-dialog>
+    <app-dialog title="Inventory">
       <app-item icon="sword_A"></app-item>
       <app-item icon="sword_A"></app-item>
       <app-item icon="sword_A"></app-item>
