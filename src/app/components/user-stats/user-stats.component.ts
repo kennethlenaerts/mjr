@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
       <p class="value">420/1000</p>
     </div>
 
-    <h3 class="level">69</h3>
+    <h2 class="level badge">69</h2>
   `,
   styleUrls: ['user-stats.component.scss']
 })

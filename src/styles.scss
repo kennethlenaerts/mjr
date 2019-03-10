@@ -42,8 +42,10 @@ h3 {
   color: var(--color-beige);
 }
 
-h3 {
-  font-size: 28px;
+h2 {
+  &.badge {
+    font-size: 28px;
+  }
 }
 
 p {

@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-badge',
   template: `
     <button [class]="type">
-      <h3 *ngIf="value">{{ value }}</h3>
+      <h2 *ngIf="value" class="badge">{{ value }}</h2>
     </button>
   `,
   styleUrls: ['badge.component.scss']

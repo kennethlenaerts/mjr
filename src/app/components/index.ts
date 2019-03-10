@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { ItemComponent } from './item/item.component';
 import { StatusFrameComponent } from './status-frame/status-frame.component';
 import { UserStatsComponent } from './user-stats/user-stats.component';
+import { DividerComponent } from './divider/divider.component';
 
 export * from './badge/badge.component';
 export * from './button/button.component';
@@ -19,6 +20,7 @@ export * from './header/header.component';
 export * from './item/item.component';
 export * from './status-frame/status-frame.component';
 export * from './user-stats/user-stats.component';
+export * from './divider/divider.component';
 
 // prettier-ignore
 export const components = [
@@ -32,4 +34,5 @@ export const components = [
   ItemComponent,
   StatusFrameComponent,
   UserStatsComponent,
+  DividerComponent,
 ]

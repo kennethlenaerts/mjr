@@ -1,0 +1,21 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 15px 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.diamond {
+  height: 13px;
+  width: 13px;
+  transform: rotateZ(45deg);
+  background-color: var(--color-brown);
+}
+
+.line {
+  background-color: var(--color-brown);
+  height: 1px;
+  width: 100%;
+}

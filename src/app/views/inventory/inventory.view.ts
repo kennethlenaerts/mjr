@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
         <div class="amount">
           <h3>Inventory</h3>
           <h3 class="total">12 / 20</h3>
+          <app-divider></app-divider>
         </div>
 
         <div class="items">
