@@ -7,9 +7,12 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 450px 2fr;
   grid-gap: 2rem;
   grid-template-areas: 'player-stats inventory';
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: calc(100% - 100px);
 }
 
 app-inventory {

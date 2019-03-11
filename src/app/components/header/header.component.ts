@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-header',
   template: `
-    <app-user-stats></app-user-stats>
+    <app-user-gage></app-user-gage>
     <div class="status">
       <app-status-frame icon="heart" value="50"></app-status-frame>
       <app-status-frame icon="gold" value="150"></app-status-frame>
