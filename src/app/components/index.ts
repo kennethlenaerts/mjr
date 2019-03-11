@@ -1,5 +1,6 @@
 import { BadgeComponent } from './badge/badge.component';
 import { ButtonComponent } from './button/button.component';
+import { MenuButtonComponent } from './button/menu-button.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogFrameComponent } from './dialog/dialog-frame.component';
 import { DialogTitleComponent } from './dialog/dialog-title.component';
@@ -23,6 +24,7 @@ export * from './status-frame/status-frame.component';
 export * from './user-stats/user-stats.component';
 export * from './divider/divider.component';
 export * from './inventory/inventory.component';
+export * from './button/menu-button.component';
 
 // prettier-ignore
 export const components = [
@@ -38,4 +40,5 @@ export const components = [
   UserStatsComponent,
   DividerComponent,
   InventoryComponent,
+  MenuButtonComponent,
 ]

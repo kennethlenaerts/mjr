@@ -42,7 +42,7 @@ const buttons: Button[] = [
 @Component({
   selector: 'app-footer',
   template: `
-    <app-button
+    <app-menu-button
       *ngFor="let button of buttons"
       [active]="url === button.routerLink"
       [routerLink]="button.routerLink"
@@ -50,7 +50,7 @@ const buttons: Button[] = [
       [badge]="button.badge"
       [value]="button.value"
       type="menu"
-    ></app-button>
+    ></app-menu-button>
   `,
   styleUrls: ['footer.component.scss']
 })

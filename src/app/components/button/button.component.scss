@@ -10,34 +10,7 @@ a {
   }
 }
 
-.menu {
-  align-items: center;
-  background-image: url('src/assets/buttons/btn_menu.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  border-radius: 20px;
-  display: grid;
-  height: 100px;
-  justify-items: center;
-  position: relative;
-  width: 100px;
 
-  &.active {
-    background-image: url('src/assets/buttons/btn_menu_active.png');
-  }
-
-  img {
-    height: auto;
-    margin: auto;
-    width: 70%;
-  }
-
-  app-badge {
-    position: absolute;
-    right: -11px;
-    top: -15px;
-  }
-}
 
 .add {
   background-image: url('src/assets/buttons/btn_add.png');
