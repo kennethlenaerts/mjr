@@ -2,8 +2,9 @@
   background: url('src/assets/frames/frame_info_middle.png');
   background-repeat: repeat-y;
   width: 100%;
-  margin-top: 20%;
-  height: 80%;
+  margin-left: 25px;
+  margin-top: 25px;
+  height: 420px;
   position: relative;
   display: block;
   background-size: contain;
@@ -36,13 +37,23 @@
 .content {
   position: absolute;
   text-align: center;
-  height: 70%;
-  margin-top: 30%;
+  margin-top: 50px;
   width: calc(100% - 12rem);
   z-index: 2;
   padding-left: 6rem;
   padding-right: 6rem;
 }
+
+h2,
+h3 {
+  text-shadow: none;
+}
+
+// :host {
+//   padding-left: 6rem;
+//   padding-right: 6rem;
+//   text-align: center;
+// }
 
 .user-info {
   margin-bottom: 2rem;
@@ -50,7 +61,7 @@
 
 .value {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 1fr 1fr;
 
   h2 {
     &:first-child {
