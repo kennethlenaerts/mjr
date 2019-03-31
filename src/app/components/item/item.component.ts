@@ -3,7 +3,10 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-item',
   template: `
-    <img [src]="'assets/icons/common_icon_' + icon + '.png'" />
+    <img
+      [src]="'assets/icons/common_icon_' + icon + '.png'"
+      [ngClass]="{ big: big }"
+    />
 
     <app-button
       *ngIf="shop"
@@ -17,5 +20,6 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ItemComponent implements OnInit {
   @Input() icon: string;
   @Input() shop: boolean = false;
+  @Input() big: boolean = false;
   ngOnInit() {}
 }

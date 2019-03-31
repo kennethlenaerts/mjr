@@ -2,7 +2,7 @@ import { ShopView } from './views/shop/shop.view';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { StartView, InfoView } from './views';
+import { StartView, InfoView, CashShopView } from './views';
 
 const routes: Routes = [
   {
@@ -11,6 +11,11 @@ const routes: Routes = [
     data: { animation: 'info' }
   },
   { path: 'shop', component: ShopView, data: { animation: 'shop' } },
+  {
+    path: 'cash-shop',
+    component: CashShopView,
+    data: { animation: 'cash-shop' }
+  },
   { path: '', component: StartView, data: { animation: 'start' } },
   { path: '**', redirectTo: '/' }
 ];

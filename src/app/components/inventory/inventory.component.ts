@@ -3,17 +3,18 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-inventory',
   template: `
-    <div class="amount" [ngClass]="{ shop: shop }">
+    <div *ngIf="title" class="amount" [ngClass]="{ shop: shop }">
       <h3 class="title">{{ title }}</h3>
       <h3 class="total" *ngIf="!shop">12 / 20</h3>
       <app-divider class="divider"></app-divider>
     </div>
 
-    <div class="items">
+    <div class="items" [ngClass]="{ big: big }">
       <app-item
         *ngFor="let item of items"
         [icon]="item"
         [shop]="shop"
+        [big]="big"
       ></app-item>
 
       <ng-container *ngIf="!shop">
@@ -37,5 +38,6 @@ export class InventoryComponent implements OnInit {
   @Input() public title: string;
   @Input() public items: string[];
   @Input() public shop: boolean = false;
+  @Input() public big: boolean = false;
   ngOnInit() {}
 }

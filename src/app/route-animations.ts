@@ -10,10 +10,20 @@ import {
 export const slider = trigger('routeAnimations', [
   transition('start => info', slideTo('right')),
   transition('start => shop', slideTo('right')),
+  transition('start => cash-shop', slideTo('right')),
+
   transition('info => start', slideTo('left')),
   transition('info => shop', slideTo('right')),
+  transition('info => cash-shop', slideTo('right')),
+
   transition('shop => info', slideTo('left')),
   transition('shop => start', slideTo('left')),
+  transition('shop => cash-shop', slideTo('right')),
+
+  transition('cash-shop => shop', slideTo('left')),
+  transition('cash-shop => info', slideTo('left')),
+  transition('cash-shop => start', slideTo('left')),
+
   transition('* => start', [
     query(':enter, :leave', [
       style({

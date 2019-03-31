@@ -23,8 +23,8 @@ const buttons: Button[] = [
     badge: 'new'
   },
   {
-    routerLink: '/messages',
-    icon: 'envelope',
+    routerLink: '/cash-shop',
+    icon: 'gem_chest',
     badge: 'count',
     value: '5'
   },
