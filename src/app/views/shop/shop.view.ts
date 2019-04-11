@@ -6,7 +6,7 @@ import { Type } from "@app/types";
     <app-dialog title="Shop">
       <app-inventory
         title="Buy"
-        [items]="items"
+        [items]="buyItems"
         [type]="TypeEnum.shop"
       ></app-inventory>
     </app-dialog>
@@ -14,7 +14,7 @@ import { Type } from "@app/types";
     <app-dialog title="inventory">
       <app-inventory
         title="Sell"
-        [items]="items"
+        [items]="inventory"
         [type]="TypeEnum.shop"
       ></app-inventory>
     </app-dialog>
@@ -22,13 +22,12 @@ import { Type } from "@app/types";
   styleUrls: ["shop.view.scss"],
 })
 export class ShopView implements OnInit {
-  public items: string[];
+  public buyItems: string[];
+  public inventory: string[];
   public TypeEnum: typeof Type = Type;
 
   ngOnInit() {
-    this.items = [
-      "anvil",
-      "arrow",
+    this.buyItems = [
       "candle",
       "chicken",
       "lucky",
@@ -36,5 +35,7 @@ export class ShopView implements OnInit {
       "sword_B",
       "potion_red",
     ];
+
+    this.inventory = ["anvil", "arrow"];
   }
 }
