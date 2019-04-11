@@ -1,11 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Type } from "@app/types";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-inventory',
+  selector: "app-inventory",
   template: `
-    <div *ngIf="title" class="amount" [ngClass]="{ shop: shop }">
+    <!-- Only display this block if there is a title -->
+    <div
+      *ngIf="title"
+      class="amount"
+      [ngClass]="{ shop: type === TypeEnum.shop }"
+    >
       <h3 class="title">{{ title }}</h3>
-      <h3 class="total" *ngIf="!shop">12 / 20</h3>
+      <h3 class="total" *ngIf="type === TypeEnum.inventory">12 / 20</h3>
       <app-divider class="divider"></app-divider>
     </div>
 
@@ -17,7 +23,8 @@ import { Component, OnInit, Input } from '@angular/core';
         [big]="big"
       ></app-item>
 
-      <ng-container *ngIf="!shop">
+      <!-- Only display this block if it's a shop view -->
+      <ng-container *ngIf="type === TypeEnum.inventory">
         <app-button
           *ngFor="let number of [1, 2, 3, 4, 5]"
           type="inventory"
@@ -32,12 +39,15 @@ import { Component, OnInit, Input } from '@angular/core';
       </ng-container>
     </div>
   `,
-  styleUrls: ['inventory.component.scss']
+  styleUrls: ["inventory.component.scss"],
 })
 export class InventoryComponent implements OnInit {
   @Input() public title: string;
   @Input() public items: string[];
   @Input() public shop: boolean = false;
   @Input() public big: boolean = false;
+  @Input() public type: Type = Type.inventory;
+  public TypeEnum = Type;
+
   ngOnInit() {}
 }

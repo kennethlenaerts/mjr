@@ -1,18 +1,10 @@
 import { Component, OnInit, Input } from "@angular/core";
-
-export enum ItemType {
-  cashShop,
-  inventory,
-  shop,
-}
+import { Type } from "@app/types";
 
 @Component({
   selector: "app-item",
   template: `
-    <img
-      [src]="'assets/icons/common_icon_' + icon + '.png'"
-      [ngClass]="{ big: big }"
-    />
+    <img [src]="this.imgSrc + icon + '.png'" [ngClass]="{ big: big }" />
 
     <app-button
       *ngIf="shop"
@@ -27,6 +19,10 @@ export class ItemComponent implements OnInit {
   @Input() icon: string;
   @Input() shop: boolean = false;
   @Input() big: boolean = false;
-  @Input() type: ItemType = ItemType.inventory;
-  ngOnInit() {}
+  @Input() type: Type = Type.inventory;
+  public imgSrc: string = "assets/icons/common_icon_";
+
+  ngOnInit() {
+    if (this.type === Type.cashShop) this.imgSrc = "assets/icons/shop_img_";
+  }
 }
