@@ -7,8 +7,8 @@ import { Type } from "@app/types";
     <img [src]="this.imgSrc + icon + '.png'" [ngClass]="{ big: big }" />
 
     <app-button
-      *ngIf="shop"
-      type="shop"
+      *ngIf="isShopView"
+      [type]="type"
       [value]="'100'"
       [icon]="'gold'"
     ></app-button>
@@ -17,12 +17,14 @@ import { Type } from "@app/types";
 })
 export class ItemComponent implements OnInit {
   @Input() icon: string;
-  @Input() shop: boolean = false;
   @Input() big: boolean = false;
   @Input() type: Type = Type.inventory;
   public imgSrc: string = "assets/icons/common_icon_";
+  public isShopView: boolean = false;
 
   ngOnInit() {
     if (this.type === Type.cashShop) this.imgSrc = "assets/icons/shop_img_";
+    if (this.type === Type.cashShop || this.type === Type.shop)
+      this.isShopView = true;
   }
 }

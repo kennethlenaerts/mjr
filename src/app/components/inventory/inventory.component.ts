@@ -19,21 +19,21 @@ import { Component, OnInit, Input } from "@angular/core";
       <app-item
         *ngFor="let item of items"
         [icon]="item"
-        [shop]="shop"
         [big]="big"
+        [type]="type"
       ></app-item>
 
-      <!-- Only display this block if it's a shop view -->
+      <!-- Only display this block if it's the inventory view -->
       <ng-container *ngIf="type === TypeEnum.inventory">
         <app-button
           *ngFor="let number of [1, 2, 3, 4, 5]"
-          type="inventory"
+          [type]="TypeEnum.inventory"
           icon="item-add"
         ></app-button>
 
         <app-button
           *ngFor="let number of [1, 2, 3, 4, 5]"
-          type="inventory"
+          [type]="TypeEnum.inventory"
           icon="item-lock"
         ></app-button>
       </ng-container>
@@ -47,7 +47,7 @@ export class InventoryComponent implements OnInit {
   @Input() public shop: boolean = false;
   @Input() public big: boolean = false;
   @Input() public type: Type = Type.inventory;
-  public TypeEnum = Type;
+  public TypeEnum: typeof Type = Type;
 
   ngOnInit() {}
 }

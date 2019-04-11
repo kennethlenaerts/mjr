@@ -7,15 +7,14 @@ import { Type } from "@app/types";
       <app-inventory
         title="Buy"
         [items]="items"
-        [shop]="true"
         [type]="TypeEnum.shop"
       ></app-inventory>
     </app-dialog>
+
     <app-dialog title="inventory">
       <app-inventory
         title="Sell"
         [items]="items"
-        [shop]="true"
         [type]="TypeEnum.shop"
       ></app-inventory>
     </app-dialog>
