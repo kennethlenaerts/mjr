@@ -8,6 +8,7 @@ import { Component, OnInit } from "@angular/core";
         [items]="items"
         [big]="true"
         [type]="TypeEnum.cashShop"
+        [icon]="'price'"
       ></app-inventory>
     </app-dialog>
   `,

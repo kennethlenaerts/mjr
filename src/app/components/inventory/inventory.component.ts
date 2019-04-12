@@ -18,9 +18,10 @@ import { Component, OnInit, Input } from "@angular/core";
     <div class="items" [ngClass]="{ big: big }">
       <app-item
         *ngFor="let item of items"
-        [icon]="item"
+        [item]="item"
         [big]="big"
         [type]="type"
+        [icon]="icon"
       ></app-item>
 
       <!-- Only display this block if it's the inventory view -->
@@ -43,6 +44,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class InventoryComponent implements OnInit {
   @Input() public title: string;
+  @Input() public icon: string;
   @Input() public items: string[];
   @Input() public shop: boolean = false;
   @Input() public big: boolean = false;
