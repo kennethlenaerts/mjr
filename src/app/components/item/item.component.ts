@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, HostBinding } from "@angular/core";
 import { Type } from "@app/types";
 
 @Component({
@@ -23,11 +23,15 @@ export class ItemComponent implements OnInit {
   public imgSrc: string = "assets/icons/common_icon_";
   public isShopView: boolean = false;
 
+  @HostBinding("class.big") public get isBig(): boolean {
+    return this.big;
+  }
+
   ngOnInit() {
     if (this.type === Type.cashShop) this.imgSrc = "assets/icons/shop_img_";
     if (this.type === Type.cashShop || this.type === Type.shop)
       this.isShopView = true;
 
-    console.log(this.icon);
+    console.log(this.big);
   }
 }

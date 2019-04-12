@@ -1,27 +1,35 @@
 :host {
-    position: relative;
-    display: block;
+  position: relative;
+  display: block;
 
+  &:before {
+    content: "";
+    background-image: url("src/assets/buttons/btn_item_backdrop.png");
+    background-size: contain;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &.big {
     &:before {
-        content: '';
-        background-image: url('src/assets/buttons/btn_item_backdrop.png');
-        background-size: contain;
-        width: 100px;
-        height: 100px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
+      width: 200px;
+      height: 200px;
     }
-
+  }
 }
 
 img {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 
-    &.big {
-        width: 200px;
-        height: 200px;
-    }
+  &.big {
+    width: 200px;
+    height: 200px;
+    // margin-left: 20px;
+    // margin-top: 45px;
+  }
 }
