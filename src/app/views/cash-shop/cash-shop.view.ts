@@ -8,7 +8,6 @@ import { Component, OnInit } from "@angular/core";
         [items]="items"
         [big]="true"
         [type]="TypeEnum.cashShop"
-        [icon]="'price'"
       ></app-inventory>
     </app-dialog>
   `,
@@ -20,10 +19,10 @@ export class CashShopView implements OnInit {
 
   ngOnInit() {
     this.items = [
+      "coin_01",
       "coin_02",
       "coin_03",
-      "gem_02",
-      "gem_03",
+      "soulgem_01",
       "soulgem_02",
       "soulgem_03",
     ];
