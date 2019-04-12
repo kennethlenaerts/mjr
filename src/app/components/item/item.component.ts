@@ -6,6 +6,8 @@ import { Type } from "@app/types";
   template: `
     <img [src]="this.imgSrc + item + '.png'" [ngClass]="{ big: big }" />
 
+    <h2 *ngIf="type === TypeEnum.cashShop">1000</h2>
+
     <app-button
       *ngIf="isShopView"
       [type]="type"
@@ -22,6 +24,7 @@ export class ItemComponent implements OnInit {
   @Input() icon: string;
   public imgSrc: string = "assets/icons/common_icon_";
   public isShopView: boolean = false;
+  public TypeEnum: typeof Type = Type;
 
   @HostBinding("class.big") public get isBig(): boolean {
     return this.big;
@@ -31,7 +34,5 @@ export class ItemComponent implements OnInit {
     if (this.type === Type.cashShop) this.imgSrc = "assets/icons/shop_img_";
     if (this.type === Type.cashShop || this.type === Type.shop)
       this.isShopView = true;
-
-    console.log(this.big);
   }
 }
