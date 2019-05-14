@@ -18,6 +18,7 @@ import { Component, OnInit, Input } from "@angular/core";
     <div class="items" [ngClass]="{ big: big }">
       <app-item
         *ngFor="let item of items"
+        (itemClick)="itemClick($event)"
         [item]="item"
         [big]="big"
         [type]="type"
@@ -50,4 +51,8 @@ export class InventoryComponent implements OnInit {
   public TypeEnum: typeof Type = Type;
 
   ngOnInit() {}
+
+  public itemClick(item) {
+    this.items = this.items.filter(i => item !== i);
+  }
 }

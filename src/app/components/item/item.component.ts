@@ -1,10 +1,21 @@
-import { Component, OnInit, Input, HostBinding } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  HostBinding,
+  Output,
+  EventEmitter,
+} from "@angular/core";
 import { Type } from "@app/types";
 
 @Component({
   selector: "app-item",
   template: `
-    <img [src]="this.imgSrc + item + '.png'" [ngClass]="{ big: big }" />
+    <img
+      [src]="this.imgSrc + item + '.png'"
+      [ngClass]="{ big: big }"
+      (click)="itemClick.emit(item)"
+    />
 
     <h2 *ngIf="type === TypeEnum.cashShop">1000</h2>
 
@@ -22,6 +33,7 @@ export class ItemComponent implements OnInit {
   @Input() big: boolean = false;
   @Input() type: Type = Type.inventory;
   @Input() icon: string;
+  @Output() itemClick: EventEmitter<string> = new EventEmitter();
   public imgSrc: string = "assets/icons/common_icon_";
   public isShopView: boolean = false;
   public TypeEnum: typeof Type = Type;
