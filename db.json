@@ -1,0 +1,31 @@
+{
+  "items": [{
+      "id": 1,
+      "name": "anvil",
+      "src": "/src/assets/icons/common_icon_anvil.png",
+      "value": 1,
+      "type": 3
+    },
+    {
+      "id": 1,
+      "name": "anvil",
+      "src": "/src/assets/icons/common_icon_anvil.png",
+      "value": 1,
+      "type": 3
+    },
+    {
+      "id": 1,
+      "name": "anvil",
+      "src": "/src/assets/icons/common_icon_anvil.png",
+      "value": 1,
+      "type": 3
+    },
+    {
+      "id": 1,
+      "name": "anvil",
+      "src": "/src/assets/icons/common_icon_anvil.png",
+      "value": 1,
+      "type": 3
+    }
+  ]
+}
