@@ -1,5 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Type } from "@app/types";
+import { Select } from "@ngxs/store";
+import { Observable } from "rxjs";
+import { Player } from "@app/models";
+import { PlayerState } from "@app/player.state";
 
 @Component({
   template: `
@@ -19,6 +23,10 @@ import { Type } from "@app/types";
 export class InfoView implements OnInit {
   public items: string[];
   public TypeEnum: typeof Type = Type;
+
+  @Select(PlayerState.playerStats) public playerStats$: Observable<
+    Partial<Player>
+  >;
 
   ngOnInit() {
     this.items = [

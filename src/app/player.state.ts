@@ -11,9 +11,12 @@ export interface PlayerStateModel extends Player {
 }
 
 const defaults: PlayerStateModel = {
+  userName: "",
   health: 0,
   maxHealth: 0,
   level: 0,
+  attack: 0,
+  defense: 0,
   hearts: 0,
   gold: 0,
   diamonds: 0,

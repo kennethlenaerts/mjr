@@ -1,6 +1,5 @@
 {
-  "items": [
-    {
+  "items": [{
       "id": 1,
       "name": "anvil",
       "src": "/src/assets/icons/common_icon_anvil.png",
@@ -51,9 +50,12 @@
     }
   ],
   "player": {
+    "userName": "LeEroYy jenKiNS",
     "health": 940,
     "maxHealth": 940,
     "level": 70,
+    "attack": 7,
+    "defense": 14,
     "hearts": 50,
     "gold": 150,
     "diamonds": 0,

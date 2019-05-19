@@ -13,9 +13,12 @@ export interface Item {
 }
 
 export interface Player {
+  userName: string;
   health: number;
   maxHealth: number;
   level: number;
+  attack: number;
+  defense: number;
   hearts: number;
   gold: number;
   diamonds: number;
