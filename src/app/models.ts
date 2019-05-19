@@ -11,3 +11,11 @@ export interface Item {
   value: number;
   type: ItemType;
 }
+
+export interface Player {
+  health: number;
+  hearts: number;
+  gold: number;
+  diamonds: number;
+  items: Item[];
+}

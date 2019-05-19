@@ -1,3 +1,4 @@
+import { PlayerState } from "./player.state";
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate } from "@angular/router";
 import { Emitter, Emittable } from "@ngxs-labs/emitter";
@@ -7,6 +8,7 @@ import { switchMap, catchError } from "rxjs/operators";
 import { Select, Store } from "@ngxs/store";
 import { Dispatch } from "@ngxs-labs/dispatch-decorator";
 import { Navigate } from "@ngxs/router-plugin";
+import { Player } from "./models";
 
 @Injectable({ providedIn: "root" })
 export class GameGuard implements CanActivate {
@@ -15,6 +17,19 @@ export class GameGuard implements CanActivate {
 
   canActivate(): Observable<boolean> {
     return this.loadAllItems.emit().pipe(
+      switchMap(() => of(true)),
+      catchError(() => of(false)),
+    );
+  }
+}
+
+@Injectable({ providedIn: "root" })
+export class PlayerGuard implements CanActivate {
+  @Emitter(PlayerState.loadPlayerStats)
+  public loadPlayerStats: Emittable<Player>;
+
+  canActivate(): Observable<boolean> {
+    return this.loadPlayerStats.emit().pipe(
       switchMap(() => of(true)),
       catchError(() => of(false)),
     );

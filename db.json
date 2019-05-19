@@ -51,6 +51,10 @@
   ],
 
   "player": {
+    "health": 420,
+    "hearts": 50,
+    "gold": 150,
+    "diamonds": 0,
     "items": [3, 5, 6, 7]
   }
 }

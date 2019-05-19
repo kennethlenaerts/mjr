@@ -3,7 +3,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
 import { StartView, InfoView, CashShopView } from "./views";
-import { GameGuard, ItemsLoadedGuard } from "./game.guard";
+import { GameGuard, ItemsLoadedGuard, PlayerGuard } from "./game.guard";
 
 const routes: Routes = [
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
     path: "",
     component: StartView,
     data: { animation: "start" },
-    canActivate: [GameGuard],
+    canActivate: [GameGuard, PlayerGuard],
   },
   { path: "**", redirectTo: "/" },
 ];
