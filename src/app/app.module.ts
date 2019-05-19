@@ -12,6 +12,7 @@ import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsEmitPluginModule } from "@ngxs-labs/emitter";
 import { HttpClientModule } from "@angular/common/http";
 import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
+import { NgxsDispatchPluginModule } from "@ngxs-labs/dispatch-decorator";
 
 // prettier-ignore
 @NgModule({
@@ -30,6 +31,7 @@ import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsEmitPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
+    NgxsDispatchPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
