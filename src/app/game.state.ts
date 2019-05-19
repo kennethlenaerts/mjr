@@ -28,7 +28,6 @@ export class GameState {
   @Receiver()
   public static loadAllItems({
     patchState,
-    getState,
   }: StateContext<GameStateModel>): Observable<Item[]> {
     return this.httpService.getItems().pipe(
       tap((items: Item[]) => patchState({ items })),
