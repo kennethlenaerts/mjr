@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class HttpService {
-  private url: string = "localhost:3000";
+  private url: string = "api";
   constructor(private http: HttpClient) {}
 
   /** Load all possible game items. */

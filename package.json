@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "server": "json-server --watch db.json",
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "server": "json-server --watch --no-cors db.json",
     "watch": "concurrently \"yarn start\" \"yarn server\"",
     "prettier": "prettier"
   },
