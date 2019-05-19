@@ -9,7 +9,7 @@ import { PlayerState } from "@app/player.state";
   template: `
     <app-dialog title="Info">
       <div class="content">
-        <app-user-stats></app-user-stats>
+        <app-user-stats [playerStats]="playerStats$ | async"></app-user-stats>
         <app-inventory
           title="Inventory"
           [items]="items"
