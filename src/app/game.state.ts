@@ -8,10 +8,12 @@ import { tap, take } from "rxjs/operators";
 
 export interface GameStateModel {
   items: Item[];
+  itemsLoaded: boolean;
 }
 
 const defaults: GameStateModel = {
   items: [],
+  itemsLoaded: false,
 };
 
 @State<GameStateModel>({
@@ -31,7 +33,13 @@ export class GameState {
   }: StateContext<GameStateModel>): Observable<Item[]> {
     return this.httpService.getItems().pipe(
       tap((items: Item[]) => patchState({ items })),
+      tap(_ => patchState({ itemsLoaded: true })),
       take(1),
     );
+  }
+
+  @Selector()
+  static itemsLoaded(state: GameStateModel) {
+    return state.itemsLoaded;
   }
 }

@@ -1,27 +1,40 @@
-import { ShopView } from './views/shop/shop.view';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { ShopView } from "./views/shop/shop.view";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { StartView, InfoView, CashShopView } from './views';
+import { StartView, InfoView, CashShopView } from "./views";
+import { GameGuard, ItemsLoadedGuard } from "./game.guard";
 
 const routes: Routes = [
   {
-    path: 'info',
+    path: "info",
     component: InfoView,
-    data: { animation: 'info' }
+    data: { animation: "info" },
+    canActivate: [ItemsLoadedGuard],
   },
-  { path: 'shop', component: ShopView, data: { animation: 'shop' } },
   {
-    path: 'cash-shop',
-    component: CashShopView,
-    data: { animation: 'cash-shop' }
+    path: "shop",
+    component: ShopView,
+    data: { animation: "shop" },
+    canActivate: [ItemsLoadedGuard],
   },
-  { path: '', component: StartView, data: { animation: 'start' } },
-  { path: '**', redirectTo: '/' }
+  {
+    path: "cash-shop",
+    component: CashShopView,
+    data: { animation: "cash-shop" },
+    canActivate: [ItemsLoadedGuard],
+  },
+  {
+    path: "",
+    component: StartView,
+    data: { animation: "start" },
+    canActivate: [GameGuard],
+  },
+  { path: "**", redirectTo: "/" },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
