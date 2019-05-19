@@ -1,5 +1,6 @@
 {
-  "items": [{
+  "items": [
+    {
       "id": 1,
       "name": "anvil",
       "src": "/src/assets/icons/common_icon_anvil.png",
@@ -49,14 +50,18 @@
       "type": 1
     }
   ],
-
   "player": {
-    "health": 420,
-    "maxHealth": 1000,
-    "level": 69,
+    "health": 940,
+    "maxHealth": 940,
+    "level": 70,
     "hearts": 50,
     "gold": 150,
     "diamonds": 0,
-    "items": [3, 5, 6, 7]
+    "items": [
+      3,
+      5,
+      6,
+      7
+    ]
   }
 }
