@@ -11,6 +11,7 @@ import { GameState } from "./game.state";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsEmitPluginModule } from "@ngxs-labs/emitter";
 import { HttpClientModule } from "@angular/common/http";
+import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
 
 // prettier-ignore
 @NgModule({
@@ -28,6 +29,7 @@ import { HttpClientModule } from "@angular/common/http";
     NgxsModule.forRoot([GameState], { developmentMode: true }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsEmitPluginModule.forRoot(),
+    NgxsRouterPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
