@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from "@angular/core";
+import { Player } from "@app/models";
 
 @Component({
-  selector: 'app-user-gage',
+  selector: "app-user-gage",
   template: `
     <div class="bar-hp-container">
       <div class="bar-hp"></div>
-      <p class="value">420/1000</p>
+      <p class="value">
+        {{ playerStats.health }} / {{ playerStats.maxHealth }}
+      </p>
     </div>
 
-    <h2 class="level badge">69</h2>
+    <h2 class="level badge">{{ playerStats.level }}</h2>
   `,
-  styleUrls: ['user-gage.component.scss']
+  styleUrls: ["user-gage.component.scss"],
 })
-export class UserGageComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+export class UserGageComponent {
+  @Input()
+  public playerStats: Partial<Player>;
 }

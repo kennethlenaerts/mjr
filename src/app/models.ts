@@ -14,6 +14,8 @@ export interface Item {
 
 export interface Player {
   health: number;
+  maxHealth: number;
+  level: number;
   hearts: number;
   gold: number;
   diamonds: number;

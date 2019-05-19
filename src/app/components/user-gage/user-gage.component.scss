@@ -1,5 +1,5 @@
 :host {
-  background: url('src/assets/frames/frame_user.png');
+  background: url("src/assets/frames/frame_user.png");
   background-repeat: no-repeat;
   width: 430px;
   height: 160px;
@@ -18,30 +18,31 @@
   left: 159px;
   top: 28px;
   position: absolute;
+  width: 245px;
 
   .bar-hp {
     height: 22px;
     width: 100px;
-    background: url('src/assets/bars/bar_hp_middle.png');
+    background: url("src/assets/bars/bar_hp_middle.png");
     position: relative;
 
     &::before,
     &::after {
       display: block;
-      content: '';
+      content: "";
       height: 22px;
       position: absolute;
       top: 0;
     }
 
     &::before {
-      background: url('src/assets/bars/bar_hp_left.png');
+      background: url("src/assets/bars/bar_hp_left.png");
       left: -5px;
       width: 5px;
     }
 
     &::after {
-      background: url('src/assets/bars/bar_hp_right.png');
+      background: url("src/assets/bars/bar_hp_right.png");
       width: 10px;
       right: -10px;
     }

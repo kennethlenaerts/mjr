@@ -3,7 +3,7 @@ import { State, Selector, StateContext } from "@ngxs/store";
 import { Receiver, EmitterAction } from "@ngxs-labs/emitter";
 import { Injector } from "@angular/core";
 import { Item, Player } from "./models";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { tap, take } from "rxjs/operators";
 
 export interface PlayerStateModel extends Player {
@@ -12,6 +12,8 @@ export interface PlayerStateModel extends Player {
 
 const defaults: PlayerStateModel = {
   health: 0,
+  maxHealth: 0,
+  level: 0,
   hearts: 0,
   gold: 0,
   diamonds: 0,
@@ -30,6 +32,7 @@ export class PlayerState {
     PlayerState.httpService = injector.get<HttpService>(HttpService);
   }
 
+  /** Load the player object in memory. */
   @Receiver()
   public static loadPlayerStats({
     patchState,
@@ -39,5 +42,11 @@ export class PlayerState {
       tap(_ => patchState({ playerLoaded: true })),
       take(1),
     );
+  }
+
+  @Selector()
+  public static playerStats(state: PlayerStateModel) {
+    const { items, ...playerStats } = state;
+    return playerStats;
   }
 }

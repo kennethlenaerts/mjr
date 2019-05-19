@@ -39,7 +39,7 @@ export class GameState {
   }
 
   @Selector()
-  static itemsLoaded(state: GameStateModel) {
+  public static itemsLoaded(state: GameStateModel) {
     return state.itemsLoaded;
   }
 }

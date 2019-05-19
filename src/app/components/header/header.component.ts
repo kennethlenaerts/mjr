@@ -1,17 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from "@angular/core";
+import { Player } from "@app/models";
 
 @Component({
-  selector: 'app-header',
+  selector: "app-header",
   template: `
-    <app-user-gage></app-user-gage>
+    <app-user-gage [playerStats]="playerStats"></app-user-gage>
     <div class="status">
-      <app-status-frame icon="heart" value="50"></app-status-frame>
-      <app-status-frame icon="gold" value="150"></app-status-frame>
-      <app-status-frame icon="gem" value="0"></app-status-frame>
+      <app-status-frame
+        icon="heart"
+        [value]="playerStats.hearts"
+      ></app-status-frame>
+      <app-status-frame
+        icon="gold"
+        [value]="playerStats.gold"
+      ></app-status-frame>
+      <app-status-frame
+        icon="gem"
+        [value]="playerStats.diamonds"
+      ></app-status-frame>
     </div>
   `,
-  styleUrls: ['header.component.scss']
+  styleUrls: ["header.component.scss"],
 })
-export class HeaderComponent implements OnInit {
-  ngOnInit() {}
+export class HeaderComponent {
+  @Input()
+  public playerStats: Partial<Player>;
 }

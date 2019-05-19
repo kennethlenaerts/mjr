@@ -52,6 +52,8 @@
 
   "player": {
     "health": 420,
+    "maxHealth": 1000,
+    "level": 69,
     "hearts": 50,
     "gold": 150,
     "diamonds": 0,

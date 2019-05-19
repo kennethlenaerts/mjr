@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { slider } from './route-animations';
+import { Component, OnInit } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { slider } from "./route-animations";
+import { Select } from "@ngxs/store";
+import { PlayerState } from "./player.state";
+import { Player } from "./models";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   template: `
-    <app-header></app-header>
+    <app-header [playerStats]="playerStats$ | async"></app-header>
 
     <main [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
@@ -13,15 +17,21 @@ import { slider } from './route-animations';
 
     <app-footer></app-footer>
   `,
-  styleUrls: ['app.component.scss'],
-  animations: [slider]
+  styleUrls: ["app.component.scss"],
+  animations: [slider],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  @Select(PlayerState.playerStats) public playerStats$: Observable<
+    Partial<Player>
+  >;
+
   public prepareRoute(outlet: RouterOutlet) {
     return (
       outlet &&
       outlet.activatedRouteData &&
-      outlet.activatedRouteData['animation']
+      outlet.activatedRouteData["animation"]
     );
   }
+
+  ngOnInit(): void {}
 }

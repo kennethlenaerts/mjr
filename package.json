@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "server": "json-server --watch --no-cors db.json",
+    "server": "json-server db.json --watch --no-cors",
     "watch": "concurrently \"yarn start\" \"yarn server\"",
     "prettier": "prettier"
   },
