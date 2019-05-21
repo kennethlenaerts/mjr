@@ -1,32 +1,30 @@
 import { Type } from "@app/types";
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+import { Select } from "@ngxs/store";
+import { GameState } from "@app/game.state";
+import { Observable } from "rxjs";
+import { Item } from "@app/models";
 
 @Component({
   template: `
     <app-dialog title="Cash Shop">
-      <!--
-      <app-inventory
-        [items]="items"
-        [big]="true"
+      <app-shop
+        [items]="cashShopItems$ | async"
         [type]="TypeEnum.cashShop"
-      ></app-inventory>
-    -->
+        (buttonClick)="shopItemClick($event)"
+      ></app-shop>
     </app-dialog>
   `,
   styleUrls: ["cash-shop.view.scss"],
 })
-export class CashShopView implements OnInit {
+export class CashShopView {
   public items: string[];
   public TypeEnum: typeof Type = Type;
 
-  ngOnInit() {
-    this.items = [
-      "coin_01",
-      "coin_02",
-      "coin_03",
-      "soulgem_01",
-      "soulgem_02",
-      "soulgem_03",
-    ];
+  @Select(GameState.cashShopItems)
+  public cashShopItems$: Observable<Item[]>;
+
+  public shopItemClick(item) {
+    console.log("hi");
   }
 }

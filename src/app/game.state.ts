@@ -82,4 +82,12 @@ export class GameState {
       for (const item of allItems) if (item.id === itemId) return item;
     });
   }
+
+  @Selector()
+  public static cashShopItems(state: GameStateModel) {
+    const allItems: Item[] = state.items;
+    return state.cashShopItems.map((itemId: number) => {
+      for (const item of allItems) if (item.id === itemId) return item;
+    });
+  }
 }

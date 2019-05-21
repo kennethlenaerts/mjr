@@ -5,7 +5,7 @@ import { Item } from "@app/models";
 @Component({
   selector: "app-shop",
   template: `
-    <div class="items">
+    <div class="items" [ngClass]="{ big: type === TypeEnum.cashShop }">
       <app-item
         *ngFor="let item of items"
         [item]="item"

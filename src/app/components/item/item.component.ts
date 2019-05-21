@@ -14,7 +14,7 @@ import { Item } from "@app/models";
   template: `
     <img
       [src]="item.src"
-      [ngClass]="{ big: big, isShop: isShop }"
+      [ngClass]="{ big: type === TypeEnum.cashShop, isShop: isShop }"
       (click)="itemClick.emit(item)"
     />
 
@@ -33,21 +33,20 @@ import { Item } from "@app/models";
   styleUrls: ["item.component.scss"],
 })
 export class ItemComponent implements OnInit {
+  public isShop: boolean = false;
+  public TypeEnum: typeof Type = Type;
+
   @Input() item: Item;
-  @Input() big: boolean = false;
   @Input() type: Type = Type.inventory;
   @Input() icon: string;
   @Output() itemClick: EventEmitter<Item> = new EventEmitter();
   @Output() buttonClick: EventEmitter<Item> = new EventEmitter();
 
-  public isShop: boolean = false;
-  public TypeEnum: typeof Type = Type;
-
-  @HostBinding("class.big") public get isBig(): boolean {
-    return this.big;
-  }
+  @HostBinding("class.big") big: boolean;
 
   ngOnInit() {
+    this.big = this.type === this.TypeEnum.cashShop;
+
     if (this.type === Type.cashShop || this.type === Type.shop)
       this.isShop = true;
   }

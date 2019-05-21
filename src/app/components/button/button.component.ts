@@ -12,25 +12,15 @@ import { Type } from "@app/types";
     ></button>
 
     <a
-      *ngIf="this.type === TypeEnum.shop"
+      *ngIf="isShop || isCashShop"
       (click)="buttonClick.emit()"
       class="shop"
+      [ngClass]="{ cash: isCashShop, gem: isCashShop }"
     >
-      <img [src]="'assets/icons/common_icon_gold.png'" />
+      <img *ngIf="isShop" [src]="'assets/icons/common_icon_gold.png'" />
+      <img *ngIf="isCashShop" [src]="'assets/icons/common_icon_gem.png'" />
       <h3>{{ value }}</h3>
     </a>
-
-    <ng-container *ngIf="this.type === TypeEnum.cashShop">
-      <a *ngIf="cashShopIsGem" class="shop cash gem">
-        <img [src]="'assets/icons/common_icon_gem.png'" />
-        <h3>{{ value }}</h3>
-      </a>
-
-      <a *ngIf="!cashShopIsGem" class="shop cash price">
-        <img [src]="'assets/icons/common_icon_price.png'" />
-        <h3>{{ value }}</h3>
-      </a>
-    </ng-container>
   `,
   styleUrls: ["button.component.scss"],
 })
@@ -41,12 +31,13 @@ export class ButtonComponent implements OnInit {
   @Input() value: string;
   @Input() active: boolean;
   @Output() buttonClick: EventEmitter<void> = new EventEmitter();
+
   public TypeEnum: typeof Type = Type;
-  public isShopView: boolean = false;
-  public bigIcon: boolean = false;
-  public cashShopIsGem: boolean = true;
+  public isShop: boolean = false;
+  public isCashShop: boolean = false;
 
   ngOnInit() {
-    if (this.icon === "price") this.cashShopIsGem = false;
+    this.isCashShop = this.type === this.TypeEnum.cashShop;
+    this.isShop = this.type === this.TypeEnum.shop;
   }
 }

@@ -1,57 +1,45 @@
 :host {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 75px auto;
-    display: block;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 75px auto;
+  display: block;
 }
 
-// .content {
-//   display: grid;
-//   grid-gap: 6rem;
-//   grid-template-columns: repeat(auto-fill, minmax(100px, auto));
-//   grid-template-rows: repeat(auto-fill, minmax(100px, auto));
-//   margin-bottom: 50px;
-//   margin-left: auto;
-//   margin-right: auto;
-//   margin-top: 50px;
-//   width: 90%;
-// }
-
 .amount {
-    display: grid;
-    grid-template-columns: auto auto 1fr;
-    justify-items: center;
-    align-items: center;
-    grid-gap: 2rem;
-    width: 90%;
-    margin: auto;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 2rem;
+  width: 90%;
+  margin: auto;
 
-    &.shop {
-        grid-template-columns: auto 1fr;
-    }
+  &.shop {
+    grid-template-columns: auto 1fr;
+  }
 
-    .total {
-        background-color: var(--color-backdrop);
-        padding: 0rem 1rem;
-        border-radius: 2rem;
-    }
+  .total {
+    background-color: var(--color-backdrop);
+    padding: 0rem 1rem;
+    border-radius: 2rem;
+  }
 }
 
 .items {
-    justify-items: center;
-    display: grid;
-    grid-gap: 2rem;
-    grid-template-columns: repeat(auto-fill, minmax(100px, auto));
-    grid-template-rows: repeat(auto-fill, minmax(100px, auto));
-    margin-bottom: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    width: 90%;
+  justify-items: center;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(100px, auto));
+  grid-template-rows: repeat(auto-fill, minmax(100px, auto));
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 90%;
 
-    &.big {
-        grid-template-columns: repeat(auto-fill, minmax(200px, auto));
-        grid-template-rows: repeat(auto-fill, minmax(200px, auto));
-    }
+  &.big {
+    grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+    grid-template-rows: repeat(auto-fill, minmax(200px, auto));
+  }
 }
