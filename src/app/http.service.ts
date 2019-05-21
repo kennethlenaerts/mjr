@@ -8,12 +8,17 @@ export class HttpService {
   private url: string = "api";
   constructor(private http: HttpClient) {}
 
-  /** Load all possible game items. */
+  /** Retrieve all possible game items. */
   public getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(`${this.url}/items`);
   }
 
-  /** Load all players stats. */
+  /** Retrieve all the shop items. */
+  public getShopItems(): Observable<number[]> {
+    return this.http.get<number[]>(`${this.url}/shop`);
+  }
+
+  /** Retrieve all players stats. */
   public getPlayerStats(): Observable<Player> {
     return this.http.get<Player>(`${this.url}/player`);
   }

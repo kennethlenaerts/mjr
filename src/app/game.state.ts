@@ -3,17 +3,19 @@ import { State, Selector, StateContext, createSelector } from "@ngxs/store";
 import { Receiver, EmitterAction } from "@ngxs-labs/emitter";
 import { Injector } from "@angular/core";
 import { Item } from "./models";
-import { Observable } from "rxjs";
-import { tap, take } from "rxjs/operators";
+import { Observable, combineLatest } from "rxjs";
+import { tap, take, switchMap } from "rxjs/operators";
 
 export interface GameStateModel {
   items: Item[];
   itemsLoaded: boolean;
+  shopItems: number[];
 }
 
 const defaults: GameStateModel = {
   items: [],
   itemsLoaded: false,
+  shopItems: [],
 };
 
 @State<GameStateModel>({
@@ -30,9 +32,14 @@ export class GameState {
   @Receiver()
   public static loadAllItems({
     patchState,
-  }: StateContext<GameStateModel>): Observable<Item[]> {
-    return this.httpService.getItems().pipe(
-      tap((items: Item[]) => patchState({ items })),
+  }: StateContext<GameStateModel>): Observable<any> {
+    return combineLatest(
+      this.httpService.getItems(),
+      this.httpService.getShopItems(),
+    ).pipe(
+      tap(([items, shopItems]: [Item[], number[]]) =>
+        patchState({ items, shopItems }),
+      ),
       tap(_ => patchState({ itemsLoaded: true })),
       take(1),
     );
