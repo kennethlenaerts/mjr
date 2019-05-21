@@ -11,7 +11,7 @@ import { GameState } from "@app/game.state";
     <app-dialog title="Shop">
       <app-shop
         [items]="shopItems$ | async"
-        (itemClick)="shopItemClick($event)"
+        (buttonClick)="shopItemClick($event)"
       ></app-shop>
     </app-dialog>
 

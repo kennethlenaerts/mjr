@@ -27,6 +27,7 @@ import { Item } from "@app/models";
       [type]="type"
       [value]="item.value"
       [icon]="icon"
+      (buttonClick)="buttonClick.emit(item)"
     ></app-button>
   `,
   styleUrls: ["item.component.scss"],
@@ -37,6 +38,7 @@ export class ItemComponent implements OnInit {
   @Input() type: Type = Type.inventory;
   @Input() icon: string;
   @Output() itemClick: EventEmitter<Item> = new EventEmitter();
+  @Output() buttonClick: EventEmitter<Item> = new EventEmitter();
 
   public isShop: boolean = false;
   public TypeEnum: typeof Type = Type;

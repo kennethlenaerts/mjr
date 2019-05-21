@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { Type } from "@app/types";
 
 @Component({
@@ -11,7 +11,11 @@ import { Type } from "@app/types";
       [class]="'inventory' + ' ' + icon"
     ></button>
 
-    <a *ngIf="this.type === TypeEnum.shop" class="shop">
+    <a
+      *ngIf="this.type === TypeEnum.shop"
+      (click)="buttonClick.emit()"
+      class="shop"
+    >
       <img [src]="'assets/icons/common_icon_gold.png'" />
       <h3>{{ value }}</h3>
     </a>
@@ -36,6 +40,7 @@ export class ButtonComponent implements OnInit {
   @Input() badge: string;
   @Input() value: string;
   @Input() active: boolean;
+  @Output() buttonClick: EventEmitter<void> = new EventEmitter();
   public TypeEnum: typeof Type = Type;
   public isShopView: boolean = false;
   public bigIcon: boolean = false;

@@ -10,7 +10,7 @@ import { Item } from "@app/models";
         *ngFor="let item of items"
         [item]="item"
         [type]="type"
-        (itemClick)="itemClick.emit($event)"
+        (buttonClick)="buttonClick.emit($event)"
       ></app-item>
     </div>
   `,
@@ -21,5 +21,5 @@ export class ShopComponent {
 
   @Input() public type: Type = Type.shop;
   @Input() public items: Item[];
-  @Output() itemClick: EventEmitter<Item> = new EventEmitter();
+  @Output() buttonClick: EventEmitter<Item> = new EventEmitter();
 }
