@@ -2,6 +2,8 @@ export enum ItemType {
   health = 1,
   weapon = 2,
   misc = 3,
+  coin = 4,
+  soulgem = 5,
 }
 
 export interface Item {

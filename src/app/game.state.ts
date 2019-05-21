@@ -2,7 +2,7 @@ import { HttpService } from "./http.service";
 import { State, Selector, StateContext, createSelector } from "@ngxs/store";
 import { Receiver, EmitterAction } from "@ngxs-labs/emitter";
 import { Injector } from "@angular/core";
-import { Item } from "./models";
+import { Item, CashShopItem } from "@app/models";
 import { Observable, combineLatest } from "rxjs";
 import { tap, take, switchMap } from "rxjs/operators";
 
@@ -10,12 +10,14 @@ export interface GameStateModel {
   items: Item[];
   itemsLoaded: boolean;
   shopItems: number[];
+  cashShopItems: CashShopItem[];
 }
 
 const defaults: GameStateModel = {
   items: [],
   itemsLoaded: false,
   shopItems: [],
+  cashShopItems: [],
 };
 
 @State<GameStateModel>({
@@ -36,9 +38,14 @@ export class GameState {
     return combineLatest(
       this.httpService.getItems(),
       this.httpService.getShopItems(),
+      this.httpService.getCashShopItems(),
     ).pipe(
-      tap(([items, shopItems]: [Item[], number[]]) =>
-        patchState({ items, shopItems }),
+      tap(
+        ([items, shopItems, cashShopItems]: [
+          Item[],
+          number[],
+          CashShopItem[]
+        ]) => patchState({ items, shopItems, cashShopItems }),
       ),
       tap(_ => patchState({ itemsLoaded: true })),
       take(1),
@@ -75,18 +82,4 @@ export class GameState {
       for (const item of allItems) if (item.id === itemId) return item;
     });
   }
-
-  // public static items(ids: number[]) {
-  //   return createSelector(
-  //     [GameState],
-  //     (state: GameStateModel) => {
-  //       return state.items.filter((item: Item) => {
-  //         for (const id of ids) {
-  //           if (item.id === id) return true;
-  //         }
-  //         return false;
-  //       });
-  //     },
-  //   );
-  // }
 }

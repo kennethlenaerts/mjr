@@ -24,7 +24,8 @@ const routes: Routes = [
     path: "cash-shop",
     component: CashShopView,
     data: { animation: "cash-shop" },
-    canActivate: [ItemsLoadedGuard],
+    // canActivate: [ItemsLoadedGuard],
+    canActivate: [GameGuard, PlayerGuard],
   },
   {
     path: "",
