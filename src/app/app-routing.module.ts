@@ -10,7 +10,8 @@ const routes: Routes = [
     path: "info",
     component: InfoView,
     data: { animation: "info" },
-    canActivate: [ItemsLoadedGuard],
+    // canActivate: [ItemsLoadedGuard],
+    canActivate: [GameGuard, PlayerGuard],
   },
   {
     path: "shop",

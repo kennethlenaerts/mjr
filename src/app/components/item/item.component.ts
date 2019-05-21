@@ -7,16 +7,18 @@ import {
   EventEmitter,
 } from "@angular/core";
 import { Type } from "@app/types";
+import { Item } from "@app/models";
 
 @Component({
   selector: "app-item",
   template: `
     <img
-      [src]="this.imgSrc + item + '.png'"
+      [src]="item.src"
       [ngClass]="{ big: big }"
       (click)="itemClick.emit(item)"
     />
 
+    <!--
     <h2 *ngIf="type === TypeEnum.cashShop">1000</h2>
 
     <app-button
@@ -25,16 +27,17 @@ import { Type } from "@app/types";
       [value]="'100'"
       [icon]="icon"
     ></app-button>
+    -->
   `,
   styleUrls: ["item.component.scss"],
 })
 export class ItemComponent implements OnInit {
-  @Input() item: string;
+  @Input() item: Item;
   @Input() big: boolean = false;
   @Input() type: Type = Type.inventory;
   @Input() icon: string;
-  @Output() itemClick: EventEmitter<string> = new EventEmitter();
-  public imgSrc: string = "assets/icons/common_icon_";
+  @Output() itemClick: EventEmitter<Item> = new EventEmitter();
+
   public isShopView: boolean = false;
   public TypeEnum: typeof Type = Type;
 
@@ -43,7 +46,6 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.type === Type.cashShop) this.imgSrc = "assets/icons/shop_img_";
     if (this.type === Type.cashShop || this.type === Type.shop)
       this.isShopView = true;
   }

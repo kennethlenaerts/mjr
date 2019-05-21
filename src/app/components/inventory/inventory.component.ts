@@ -1,58 +1,44 @@
 import { Type } from "@app/types";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Item } from "@app/models";
 
 @Component({
   selector: "app-inventory",
   template: `
-    <!-- Only display this block if there is a title -->
-    <div
-      *ngIf="title"
-      class="amount"
-      [ngClass]="{ shop: type === TypeEnum.shop }"
-    >
+    <div class="amount">
       <h3 class="title">{{ title }}</h3>
-      <h3 class="total" *ngIf="type === TypeEnum.inventory">12 / 20</h3>
+      <h3 class="total">12 / 20</h3>
       <app-divider class="divider"></app-divider>
     </div>
 
-    <div class="items" [ngClass]="{ big: big }">
+    <div class="items">
       <app-item
         *ngFor="let item of items"
-        (itemClick)="itemClick($event)"
         [item]="item"
-        [big]="big"
         [type]="type"
+        (itemClick)="itemClick.emit($event)"
       ></app-item>
 
-      <!-- Only display this block if it's the inventory view -->
-      <ng-container *ngIf="type === TypeEnum.inventory">
-        <app-button
-          *ngFor="let number of [1, 2, 3, 4, 5]"
-          [type]="TypeEnum.inventory"
-          icon="item-add"
-        ></app-button>
+      <app-button
+        *ngFor="let number of [1, 2, 3, 4, 5]"
+        [type]="TypeEnum.inventory"
+        icon="item-add"
+      ></app-button>
 
-        <app-button
-          *ngFor="let number of [1, 2, 3, 4, 5]"
-          [type]="TypeEnum.inventory"
-          icon="item-lock"
-        ></app-button>
-      </ng-container>
+      <app-button
+        *ngFor="let number of [1, 2, 3, 4, 5]"
+        [type]="TypeEnum.inventory"
+        icon="item-lock"
+      ></app-button>
     </div>
   `,
   styleUrls: ["inventory.component.scss"],
 })
-export class InventoryComponent implements OnInit {
-  @Input() public title: string;
-  @Input() public items: string[];
-  @Input() public shop: boolean = false;
-  @Input() public big: boolean = false;
-  @Input() public type: Type = Type.inventory;
+export class InventoryComponent {
   public TypeEnum: typeof Type = Type;
 
-  ngOnInit() {}
-
-  public itemClick(item) {
-    this.items = this.items.filter(i => item !== i);
-  }
+  @Input() public title: string = "Inventory";
+  @Input() public type: Type = Type.inventory;
+  @Input() public items: Item[];
+  @Output() itemClick: EventEmitter<Item> = new EventEmitter();
 }

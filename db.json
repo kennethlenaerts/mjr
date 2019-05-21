@@ -2,56 +2,57 @@
   "items": [{
       "id": 1,
       "name": "anvil",
-      "src": "/src/assets/icons/common_icon_anvil.png",
+      "src": "/assets/icons/common_icon_anvil.png",
       "value": 15,
       "type": 3
     },
     {
       "id": 2,
       "name": "arrow",
-      "src": "/src/assets/icons/common_icon_arrow.png",
+      "src": "/assets/icons/common_icon_arrow.png",
       "value": 25,
       "type": 2
     },
     {
       "id": 3,
       "name": "chicken",
-      "src": "/src/assets/icons/common_icon_chicken.png",
+      "src": "/assets/icons/common_icon_chicken.png",
       "value": 69,
       "type": 3
     },
     {
       "id": 4,
       "name": "lucky",
-      "src": "/src/assets/icons/common_icon_lucky.png",
+      "src": "/assets/icons/common_icon_lucky.png",
       "value": 1,
       "type": 3
     },
     {
       "id": 5,
       "name": "shield_A",
-      "src": "/src/assets/icons/common_icon_shield_A.png",
+      "src": "/assets/icons/common_icon_shield_A.png",
       "value": 100,
       "type": 2
     },
     {
       "id": 6,
       "name": "sword_B",
-      "src": "/src/assets/icons/common_icon_sword_B.png",
+      "src": "/assets/icons/common_icon_sword_B.png",
       "value": 150,
       "type": 2
     },
     {
       "id": 7,
       "name": "potion_red",
-      "src": "/src/assets/icons/common_icon_potion_red.png",
+      "src": "/assets/icons/common_icon_potion_red.png",
       "value": 50,
+      "healthPoints": 200,
       "type": 1
     }
   ],
   "player": {
     "userName": "LeEroYy jenKiNS",
-    "health": 940,
+    "health": 420,
     "maxHealth": 940,
     "level": 69,
     "attack": 7,

@@ -1,10 +1,10 @@
 import { HttpService } from "./http.service";
-import { State, Selector, StateContext, Select, Store } from "@ngxs/store";
-import { Receiver, EmitterAction } from "@ngxs-labs/emitter";
+import { State, Selector, StateContext, Store } from "@ngxs/store";
+import { Receiver } from "@ngxs-labs/emitter";
 import { Injector } from "@angular/core";
 import { Item, Player } from "./models";
-import { Observable, of } from "rxjs";
-import { tap, take, find } from "rxjs/operators";
+import { Observable } from "rxjs";
+import { tap, take } from "rxjs/operators";
 import { GameState } from "./game.state";
 
 export interface PlayerStateModel extends Player {
@@ -33,8 +33,6 @@ export class PlayerState {
   private static httpService: HttpService;
   private static store: Store;
 
-  // @Select(GameState.items) private static gameItems: Observable<Item[]>;
-
   constructor(injector: Injector) {
     PlayerState.httpService = injector.get<HttpService>(HttpService);
     PlayerState.store = injector.get<Store>(Store);
@@ -50,6 +48,31 @@ export class PlayerState {
       tap(_ => patchState({ playerLoaded: true })),
       take(1),
     );
+  }
+
+  @Receiver()
+  public static updateHealth(
+    { patchState, getState }: StateContext<PlayerStateModel>,
+    { payload: healthUp }: { payload: number },
+  ): void {
+    const updatedHealth = getState().health + healthUp;
+    const maxHealth = getState().maxHealth;
+    const health = updatedHealth >= maxHealth ? maxHealth : updatedHealth;
+
+    patchState({ health });
+  }
+
+  @Receiver()
+  public static removeItem(
+    { patchState, getState }: StateContext<PlayerStateModel>,
+    { payload: itemToDelete }: { payload: number },
+  ): void {
+    const currentItems = getState().items;
+    const updatedItems: number[] = currentItems.filter(
+      item => item !== itemToDelete,
+    );
+
+    patchState({ items: updatedItems });
   }
 
   @Selector()

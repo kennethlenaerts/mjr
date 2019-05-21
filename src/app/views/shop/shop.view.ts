@@ -3,6 +3,7 @@ import { Type } from "@app/types";
 
 @Component({
   template: `
+    <!--
     <app-dialog title="Shop">
       <app-inventory
         title="Buy"
@@ -18,6 +19,7 @@ import { Type } from "@app/types";
         [type]="TypeEnum.shop"
       ></app-inventory>
     </app-dialog>
+    -->
   `,
   styleUrls: ["shop.view.scss"],
 })

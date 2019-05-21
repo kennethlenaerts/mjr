@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 
 @Component({
   template: `
+    <!--
     <app-dialog title="Cash Shop">
       <app-inventory
         [items]="items"
@@ -10,6 +11,7 @@ import { Component, OnInit } from "@angular/core";
         [type]="TypeEnum.cashShop"
       ></app-inventory>
     </app-dialog>
+    -->
   `,
   styleUrls: ["cash-shop.view.scss"],
 })
