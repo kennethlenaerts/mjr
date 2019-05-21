@@ -4,18 +4,22 @@ import { Select } from "@ngxs/store";
 import { Observable } from "rxjs";
 import { PlayerState } from "@app/player.state";
 import { Item } from "@app/models";
+import { GameState } from "@app/game.state";
 
 @Component({
   template: `
     <app-dialog title="Shop">
-      <app-shop></app-shop>
+      <app-shop
+        [items]="shopItems$ | async"
+        (itemClick)="shopItemClick($event)"
+      ></app-shop>
     </app-dialog>
 
     <app-dialog title="inventory">
       <app-inventory
         [items]="playerItems$ | async"
         [openItemSlots]="playerOpenItemSlots | async"
-        (itemClick)="itemClick($event)"
+        (itemClick)="inventoryItemClick($event)"
       ></app-inventory>
     </app-dialog>
   `,
@@ -27,10 +31,17 @@ export class ShopView {
   @Select(PlayerState.items)
   public playerItems$: Observable<Item[]>;
 
+  @Select(GameState.shopItems)
+  public shopItems$: Observable<Item[]>;
+
   @Select(PlayerState.openItemSlots)
   public playerOpenItemSlots: Observable<number>;
 
-  public itemClick(item: Item) {
+  public inventoryItemClick(item: Item) {
+    console.log(item);
+  }
+
+  public shopItemClick(item: Item) {
     console.log(item);
   }
 }

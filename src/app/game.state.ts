@@ -55,6 +55,14 @@ export class GameState {
     return state.items;
   }
 
+  @Selector()
+  public static shopItems(state: GameStateModel) {
+    const allItems: Item[] = state.items;
+    return state.shopItems.map((itemId: number) => {
+      for (const item of allItems) if (item.id === itemId) return item;
+    });
+  }
+
   // public static items(ids: number[]) {
   //   return createSelector(
   //     [GameState],
