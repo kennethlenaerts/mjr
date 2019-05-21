@@ -1,5 +1,5 @@
 .info-frame {
-  background: url('src/assets/frames/frame_info_middle.png');
+  background: url("src/assets/frames/frame_info_middle.png");
   background-repeat: repeat-y;
   width: 100%;
   margin-left: 25px;
@@ -12,7 +12,7 @@
   &::before,
   &::after {
     display: block;
-    content: '';
+    content: "";
     width: 450px;
     position: absolute;
     left: 0;
@@ -22,13 +22,13 @@
   }
 
   &:before {
-    background-image: url('src/assets/frames/frame_info_top.png');
+    background-image: url("src/assets/frames/frame_info_top.png");
     top: -10%;
     height: 223px;
   }
 
   &:after {
-    background-image: url('src/assets/frames/frame_info_bottom.png');
+    background-image: url("src/assets/frames/frame_info_bottom.png");
     bottom: -10%;
     height: 253px;
   }
@@ -61,7 +61,7 @@ h3 {
 
 .value {
   display: grid;
-  grid-template-columns: auto 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
 
   h2 {
     &:first-child {

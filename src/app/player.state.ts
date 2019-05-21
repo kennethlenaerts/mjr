@@ -20,7 +20,7 @@ const defaults: PlayerStateModel = {
   defense: 0,
   hearts: 0,
   gold: 0,
-  diamonds: 0,
+  gem: 0,
   items: [],
   playerLoaded: false,
   maxItemSlots: 0,

@@ -22,7 +22,7 @@ export interface Player {
   defense: number;
   hearts: number;
   gold: number;
-  diamonds: number;
+  gem: number;
   items: number[];
   maxItemSlots: number;
 }

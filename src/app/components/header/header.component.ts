@@ -14,10 +14,7 @@ import { Player } from "@app/models";
         icon="gold"
         [value]="playerStats.gold"
       ></app-status-frame>
-      <app-status-frame
-        icon="gem"
-        [value]="playerStats.diamonds"
-      ></app-status-frame>
+      <app-status-frame icon="gem" [value]="playerStats.gem"></app-status-frame>
     </div>
   `,
   styleUrls: ["header.component.scss"],

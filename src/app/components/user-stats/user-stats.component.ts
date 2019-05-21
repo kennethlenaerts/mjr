@@ -24,11 +24,5 @@ import { Player } from "@app/models";
 })
 export class UserStatsComponent {
   @Input() public playerStats: Partial<Player>;
-  public userStats: string[] = [
-    "attack",
-    "defense",
-    "health",
-    "gold",
-    "diamonds",
-  ];
+  public userStats: string[] = ["attack", "defense", "health", "gold", "gem"];
 }
