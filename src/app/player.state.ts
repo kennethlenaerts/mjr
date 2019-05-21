@@ -1,10 +1,11 @@
 import { HttpService } from "./http.service";
-import { State, Selector, StateContext } from "@ngxs/store";
+import { State, Selector, StateContext, Select, Store } from "@ngxs/store";
 import { Receiver, EmitterAction } from "@ngxs-labs/emitter";
 import { Injector } from "@angular/core";
 import { Item, Player } from "./models";
 import { Observable, of } from "rxjs";
-import { tap, take } from "rxjs/operators";
+import { tap, take, find } from "rxjs/operators";
+import { GameState } from "./game.state";
 
 export interface PlayerStateModel extends Player {
   playerLoaded: boolean;
@@ -30,9 +31,13 @@ const defaults: PlayerStateModel = {
 })
 export class PlayerState {
   private static httpService: HttpService;
+  private static store: Store;
+
+  // @Select(GameState.items) private static gameItems: Observable<Item[]>;
 
   constructor(injector: Injector) {
     PlayerState.httpService = injector.get<HttpService>(HttpService);
+    PlayerState.store = injector.get<Store>(Store);
   }
 
   /** Load the player object in memory. */
@@ -48,8 +53,17 @@ export class PlayerState {
   }
 
   @Selector()
-  public static playerStats(state: PlayerStateModel) {
+  public static stats(state: PlayerStateModel): Partial<Player> {
     const { items, ...playerStats } = state;
     return playerStats;
+  }
+
+  /** Map the players inventory item ids to the item values */
+  @Selector()
+  public static items(state: PlayerStateModel) {
+    const allGameItems: Item[] = this.store.selectSnapshot(GameState.items);
+    return state.items.map((itemId: number) => {
+      for (const item of allGameItems) if (item.id === itemId) return item;
+    });
   }
 }

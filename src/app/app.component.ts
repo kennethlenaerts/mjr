@@ -21,9 +21,7 @@ import { Observable } from "rxjs";
   animations: [slider],
 })
 export class AppComponent implements OnInit {
-  @Select(PlayerState.playerStats) public playerStats$: Observable<
-    Partial<Player>
-  >;
+  @Select(PlayerState.stats) public playerStats$: Observable<Partial<Player>>;
 
   public prepareRoute(outlet: RouterOutlet) {
     return (

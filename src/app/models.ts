@@ -22,5 +22,5 @@ export interface Player {
   hearts: number;
   gold: number;
   diamonds: number;
-  items: Item[];
+  items: number[];
 }

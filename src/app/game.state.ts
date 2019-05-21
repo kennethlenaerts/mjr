@@ -1,5 +1,5 @@
 import { HttpService } from "./http.service";
-import { State, Selector, StateContext } from "@ngxs/store";
+import { State, Selector, StateContext, createSelector } from "@ngxs/store";
 import { Receiver, EmitterAction } from "@ngxs-labs/emitter";
 import { Injector } from "@angular/core";
 import { Item } from "./models";
@@ -39,7 +39,26 @@ export class GameState {
   }
 
   @Selector()
-  public static itemsLoaded(state: GameStateModel) {
+  public static itemsLoaded(state: GameStateModel): boolean {
     return state.itemsLoaded;
   }
+
+  @Selector()
+  public static items(state: GameStateModel): Item[] {
+    return state.items;
+  }
+
+  // public static items(ids: number[]) {
+  //   return createSelector(
+  //     [GameState],
+  //     (state: GameStateModel) => {
+  //       return state.items.filter((item: Item) => {
+  //         for (const id of ids) {
+  //           if (item.id === id) return true;
+  //         }
+  //         return false;
+  //       });
+  //     },
+  //   );
+  // }
 }

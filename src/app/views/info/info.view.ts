@@ -24,9 +24,11 @@ export class InfoView implements OnInit {
   public items: string[];
   public TypeEnum: typeof Type = Type;
 
-  @Select(PlayerState.playerStats) public playerStats$: Observable<
-    Partial<Player>
-  >;
+  @Select(PlayerState.stats)
+  public playerStats$: Observable<Partial<Player>>;
+
+  @Select(PlayerState.items)
+  public playerItems$: Observable<any>;
 
   ngOnInit() {
     this.items = [
@@ -39,5 +41,7 @@ export class InfoView implements OnInit {
       "sword_B",
       "potion_red",
     ];
+
+    this.playerItems$.subscribe(console.log);
   }
 }
