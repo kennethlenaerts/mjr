@@ -1,43 +1,36 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Type } from "@app/types";
+import { Select } from "@ngxs/store";
+import { Observable } from "rxjs";
+import { PlayerState } from "@app/player.state";
+import { Item } from "@app/models";
 
 @Component({
   template: `
-    <!--
     <app-dialog title="Shop">
-      <app-inventory
-        title="Buy"
-        [items]="buyItems"
-        [type]="TypeEnum.shop"
-      ></app-inventory>
+      <app-shop></app-shop>
     </app-dialog>
 
     <app-dialog title="inventory">
       <app-inventory
-        title="Sell"
-        [items]="inventory"
-        [type]="TypeEnum.shop"
+        [items]="playerItems$ | async"
+        [openItemSlots]="playerOpenItemSlots | async"
+        (itemClick)="itemClick($event)"
       ></app-inventory>
     </app-dialog>
-    -->
   `,
   styleUrls: ["shop.view.scss"],
 })
-export class ShopView implements OnInit {
-  public buyItems: string[];
-  public inventory: string[];
-  public TypeEnum: typeof Type = Type;
+export class ShopView {
+  // public TypeEnum: typeof Type = Type;
 
-  ngOnInit() {
-    this.buyItems = [
-      "candle",
-      "chicken",
-      "lucky",
-      "shield_A",
-      "sword_B",
-      "potion_red",
-    ];
+  @Select(PlayerState.items)
+  public playerItems$: Observable<Item[]>;
 
-    this.inventory = ["anvil", "arrow"];
+  @Select(PlayerState.openItemSlots)
+  public playerOpenItemSlots: Observable<number>;
+
+  public itemClick(item: Item) {
+    console.log(item);
   }
 }
