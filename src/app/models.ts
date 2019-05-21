@@ -13,6 +13,7 @@ export interface Item {
   value: number;
   type: ItemType;
   healthPoints?: number;
+  worth?: number;
 }
 
 export interface Player {

@@ -1,9 +1,11 @@
+import { PlayerState } from "./../../player.state";
 import { Type } from "@app/types";
 import { Component } from "@angular/core";
 import { Select } from "@ngxs/store";
 import { GameState } from "@app/game.state";
 import { Observable } from "rxjs";
 import { Item } from "@app/models";
+import { Emitter, Emittable } from "@ngxs-labs/emitter";
 
 @Component({
   template: `
@@ -24,7 +26,14 @@ export class CashShopView {
   @Select(GameState.cashShopItems)
   public cashShopItems$: Observable<Item[]>;
 
-  public shopItemClick(item) {
-    console.log("hi");
+  @Emitter(PlayerState.addGold)
+  public playerAddGold: Emittable<number>;
+
+  @Emitter(PlayerState.removeGem)
+  public playerRemoveGem: Emittable<number>;
+
+  public shopItemClick(item: Item) {
+    this.playerAddGold.emit(item.worth);
+    this.playerRemoveGem.emit(item.value);
   }
 }

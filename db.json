@@ -55,20 +55,23 @@
       "name": "coin_01",
       "src": "/assets/icons/shop_img_coin_01.png",
       "value": 15,
+      "worth": 200,
       "type": 4
     },
     {
       "id": 9,
       "name": "coin_02",
       "src": "/assets/icons/shop_img_coin_02.png",
-      "value": 15,
+      "value": 30,
+      "worth": 800,
       "type": 4
     },
     {
       "id": 10,
       "name": "coin_03",
       "src": "/assets/icons/shop_img_coin_03.png",
-      "value": 15,
+      "value": 45,
+      "worth": 2000,
       "type": 4
     },
     {
@@ -76,20 +79,23 @@
       "name": "soulgem_01",
       "src": "/assets/icons/shop_img_soulgem_01.png",
       "value": 15,
+      "worth": 20,
       "type": 5
     },
     {
       "id": 12,
       "name": "soulgem_02",
       "src": "/assets/icons/shop_img_soulgem_02.png",
-      "value": 15,
+      "value": 30,
+      "worth": 20,
       "type": 5
     },
     {
       "id": 13,
       "name": "soulgem_03",
       "src": "/assets/icons/shop_img_soulgem_03.png",
-      "value": 15,
+      "value": 45,
+      "worth": 20,
       "type": 5
     }
   ],
@@ -102,7 +108,7 @@
     "defense": 14,
     "hearts": 50,
     "gold": 150,
-    "gem": 0,
+    "gem": 270,
     "items": [3, 5, 6, 7],
     "maxItemSlots": 7
   },

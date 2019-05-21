@@ -86,12 +86,30 @@ export class PlayerState {
   }
 
   @Receiver()
+  public static addGold(
+    { patchState, getState }: StateContext<PlayerStateModel>,
+    { payload: amount }: { payload: number },
+  ): void {
+    const updatedGold: number = getState().gold + amount;
+    patchState({ gold: updatedGold });
+  }
+
+  @Receiver()
   public static removeGold(
     { patchState, getState }: StateContext<PlayerStateModel>,
     { payload: amount }: { payload: number },
   ): void {
     const updatedGold: number = getState().gold - amount;
     patchState({ gold: updatedGold });
+  }
+
+  @Receiver()
+  public static removeGem(
+    { patchState, getState }: StateContext<PlayerStateModel>,
+    { payload: amount }: { payload: number },
+  ): void {
+    const updatedGem: number = getState().gem - amount;
+    patchState({ gem: updatedGem });
   }
 
   @Selector()
