@@ -2,6 +2,25 @@
   position: relative;
   display: block;
 
+  &:hover {
+    cursor: pointer;
+
+    img {
+      transform: scale(1.2);
+    }
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+    transition: var(--transition);
+
+    &.big {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
   &:before {
     content: "";
     background-image: url("src/assets/buttons/btn_item_backdrop.png");
@@ -30,17 +49,5 @@ h2 {
   }
   &.heart {
     color: var(--color-red);
-  }
-}
-
-img {
-  width: 100px;
-  height: 100px;
-
-  &.big {
-    width: 200px;
-    height: 200px;
-    // margin-left: 20px;
-    // margin-top: 45px;
   }
 }

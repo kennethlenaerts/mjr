@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { Player } from "@app/models";
 
 @Component({
@@ -11,35 +11,24 @@ import { Player } from "@app/models";
           <h2>Level {{ playerStats.level }}</h2>
         </div>
 
-        <div class="value" *ngFor="let item of userStats | keyvalue">
-          <img
-            [src]="'assets/stat_info_icons/stat_info_ic_' + item.key + '.png'"
-          />
-          <h3>{{ item.key }}</h3>
-          <h3>{{ item.value }}</h3>
+        <div class="value" *ngFor="let stat of userStats">
+          <img [src]="'assets/stat_info_icons/stat_info_ic_' + stat + '.png'" />
+          <h3>{{ stat.toUpperCase() }}</h3>
+          <h3>{{ playerStats[stat] }}</h3>
         </div>
       </div>
     </div>
   `,
   styleUrls: ["user-stats.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserStatsComponent implements OnInit {
+export class UserStatsComponent {
   @Input() public playerStats: Partial<Player>;
-  public userStats: {
-    attack: number;
-    defense: number;
-    health: number;
-    gold: number;
-    gem: number;
-  };
-
-  ngOnInit() {
-    this.userStats = {
-      attack: this.playerStats.attack,
-      defense: this.playerStats.defense,
-      health: this.playerStats.health,
-      gold: this.playerStats.gold,
-      gem: this.playerStats.diamonds,
-    };
-  }
+  public userStats: string[] = [
+    "attack",
+    "defense",
+    "health",
+    "gold",
+    "diamonds",
+  ];
 }

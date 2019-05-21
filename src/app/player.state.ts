@@ -23,6 +23,7 @@ const defaults: PlayerStateModel = {
   diamonds: 0,
   items: [],
   playerLoaded: false,
+  maxItemSlots: 0,
 };
 
 @State<PlayerStateModel>({
