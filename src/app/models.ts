@@ -24,4 +24,5 @@ export interface Player {
   gold: number;
   diamonds: number;
   items: number[];
+  maxItemSlots: number;
 }

@@ -20,7 +20,7 @@ import { Item } from "@app/models";
       ></app-item>
 
       <app-button
-        *ngFor="let number of [1, 2, 3, 4, 5]"
+        *ngFor="let number of ' '.repeat(openItemSlots).split('')"
         [type]="TypeEnum.inventory"
         icon="item-add"
       ></app-button>
@@ -40,5 +40,6 @@ export class InventoryComponent {
   @Input() public title: string = "Inventory";
   @Input() public type: Type = Type.inventory;
   @Input() public items: Item[];
+  @Input() public openItemSlots: number;
   @Output() itemClick: EventEmitter<Item> = new EventEmitter();
 }

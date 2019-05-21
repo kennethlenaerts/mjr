@@ -12,6 +12,7 @@ import { Emitter, Emittable } from "@ngxs-labs/emitter";
         <app-user-stats [playerStats]="playerStats$ | async"></app-user-stats>
         <app-inventory
           [items]="playerItems$ | async"
+          [openItemSlots]="playerOpenItemSlots | async"
           (itemClick)="itemClick($event)"
         ></app-inventory>
       </div>
@@ -24,7 +25,10 @@ export class InfoView {
   public playerStats$: Observable<Partial<Player>>;
 
   @Select(PlayerState.items)
-  public playerItems$: Observable<any>;
+  public playerItems$: Observable<Item[]>;
+
+  @Select(PlayerState.openItemSlots)
+  public playerOpenItemSlots: Observable<number>;
 
   @Emitter(PlayerState.updateHealth)
   public updatePlayerHealth: Emittable<number>;

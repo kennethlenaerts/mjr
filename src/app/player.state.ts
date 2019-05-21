@@ -89,4 +89,9 @@ export class PlayerState {
       for (const item of allGameItems) if (item.id === itemId) return item;
     });
   }
+
+  @Selector()
+  public static openItemSlots(state: PlayerStateModel) {
+    return state.maxItemSlots - state.items.length;
+  }
 }

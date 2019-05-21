@@ -46,7 +46,7 @@
       "name": "potion_red",
       "src": "/assets/icons/common_icon_potion_red.png",
       "value": 50,
-      "healthPoints": 200,
+      "healthPoints": 1000,
       "type": 1
     }
   ],
@@ -65,6 +65,7 @@
       5,
       6,
       7
-    ]
+    ],
+    "maxItemSlots": 7
   }
 }
