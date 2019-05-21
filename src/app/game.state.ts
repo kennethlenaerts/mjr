@@ -45,6 +45,19 @@ export class GameState {
     );
   }
 
+  @Receiver()
+  public static removeShopItem(
+    { patchState, getState }: StateContext<GameStateModel>,
+    { payload: itemToDelete }: { payload: number },
+  ): void {
+    const currentShopItems = getState().shopItems;
+    const updatedShopItems: number[] = currentShopItems.filter(
+      item => item !== itemToDelete,
+    );
+
+    patchState({ shopItems: updatedShopItems });
+  }
+
   @Selector()
   public static itemsLoaded(state: GameStateModel): boolean {
     return state.itemsLoaded;

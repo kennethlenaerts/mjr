@@ -1,3 +1,4 @@
+import { Emittable } from "@ngxs-labs/emitter";
 import { Component } from "@angular/core";
 import { Type } from "@app/types";
 import { Select } from "@ngxs/store";
@@ -5,6 +6,7 @@ import { Observable } from "rxjs";
 import { PlayerState } from "@app/player.state";
 import { Item, Player } from "@app/models";
 import { GameState } from "@app/game.state";
+import { Emitter } from "@ngxs-labs/emitter";
 
 @Component({
   template: `
@@ -20,7 +22,6 @@ import { GameState } from "@app/game.state";
         [items]="playerItems$ | async"
         [openItemSlots]="playerOpenItemSlots | async"
         [maxItemSlots]="(playerStats$ | async)?.maxItemSlots"
-        (itemClick)="inventoryItemClick($event)"
       ></app-inventory>
     </app-dialog>
   `,
@@ -41,11 +42,18 @@ export class ShopView {
   @Select(PlayerState.openItemSlots)
   public playerOpenItemSlots: Observable<number>;
 
-  public inventoryItemClick(item: Item) {
-    console.log(item);
-  }
+  @Emitter(GameState.removeShopItem)
+  public removeShopItem: Emittable<number>;
+
+  @Emitter(PlayerState.addItem)
+  public addPlayerItem: Emittable<number>;
+
+  @Emitter(PlayerState.removeGold)
+  public removePlayerGold: Emittable<number>;
 
   public shopItemClick(item: Item) {
-    console.log(item);
+    this.removeShopItem.emit(item.id);
+    this.addPlayerItem.emit(item.id);
+    this.removePlayerGold.emit(item.value);
   }
 }

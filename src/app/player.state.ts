@@ -76,6 +76,24 @@ export class PlayerState {
     patchState({ items: updatedItems });
   }
 
+  @Receiver()
+  public static addItem(
+    { patchState, getState }: StateContext<PlayerStateModel>,
+    { payload: itemToAdd }: { payload: number },
+  ): void {
+    const updatedItems: number[] = [...getState().items, itemToAdd];
+    patchState({ items: updatedItems });
+  }
+
+  @Receiver()
+  public static removeGold(
+    { patchState, getState }: StateContext<PlayerStateModel>,
+    { payload: amount }: { payload: number },
+  ): void {
+    const updatedGold: number = getState().gold - amount;
+    patchState({ gold: updatedGold });
+  }
+
   @Selector()
   public static stats(state: PlayerStateModel): Partial<Player> {
     const { items, ...playerStats } = state;
