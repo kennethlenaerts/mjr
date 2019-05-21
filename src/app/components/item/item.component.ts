@@ -14,20 +14,20 @@ import { Item } from "@app/models";
   template: `
     <img
       [src]="item.src"
-      [ngClass]="{ big: big }"
+      [ngClass]="{ big: big, isShop: isShop }"
       (click)="itemClick.emit(item)"
     />
 
     <!--
     <h2 *ngIf="type === TypeEnum.cashShop">1000</h2>
+    -->
 
     <app-button
-      *ngIf="isShopView"
+      *ngIf="isShop"
       [type]="type"
-      [value]="'100'"
+      [value]="item.value"
       [icon]="icon"
     ></app-button>
-    -->
   `,
   styleUrls: ["item.component.scss"],
 })
@@ -38,7 +38,7 @@ export class ItemComponent implements OnInit {
   @Input() icon: string;
   @Output() itemClick: EventEmitter<Item> = new EventEmitter();
 
-  public isShopView: boolean = false;
+  public isShop: boolean = false;
   public TypeEnum: typeof Type = Type;
 
   @HostBinding("class.big") public get isBig(): boolean {
@@ -47,6 +47,6 @@ export class ItemComponent implements OnInit {
 
   ngOnInit() {
     if (this.type === Type.cashShop || this.type === Type.shop)
-      this.isShopView = true;
+      this.isShop = true;
   }
 }

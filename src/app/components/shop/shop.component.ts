@@ -19,7 +19,7 @@ import { Item } from "@app/models";
 export class ShopComponent {
   public TypeEnum: typeof Type = Type;
 
-  @Input() public type: Type = Type.inventory;
+  @Input() public type: Type = Type.shop;
   @Input() public items: Item[];
   @Output() itemClick: EventEmitter<Item> = new EventEmitter();
 }

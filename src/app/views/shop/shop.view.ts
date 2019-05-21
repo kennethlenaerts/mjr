@@ -3,7 +3,7 @@ import { Type } from "@app/types";
 import { Select } from "@ngxs/store";
 import { Observable } from "rxjs";
 import { PlayerState } from "@app/player.state";
-import { Item } from "@app/models";
+import { Item, Player } from "@app/models";
 import { GameState } from "@app/game.state";
 
 @Component({
@@ -19,6 +19,7 @@ import { GameState } from "@app/game.state";
       <app-inventory
         [items]="playerItems$ | async"
         [openItemSlots]="playerOpenItemSlots | async"
+        [maxItemSlots]="(playerStats$ | async)?.maxItemSlots"
         (itemClick)="inventoryItemClick($event)"
       ></app-inventory>
     </app-dialog>
@@ -27,6 +28,9 @@ import { GameState } from "@app/game.state";
 })
 export class ShopView {
   // public TypeEnum: typeof Type = Type;
+
+  @Select(PlayerState.stats)
+  public playerStats$: Observable<Partial<Player>>;
 
   @Select(PlayerState.items)
   public playerItems$: Observable<Item[]>;

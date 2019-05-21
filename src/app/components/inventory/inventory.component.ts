@@ -7,7 +7,7 @@ import { Item } from "@app/models";
   template: `
     <div class="amount">
       <h3 class="title">{{ title }}</h3>
-      <h3 class="total">12 / 20</h3>
+      <h3 class="total">{{ items.length }} / {{ maxItemSlots }}</h3>
       <app-divider class="divider"></app-divider>
     </div>
 
@@ -41,5 +41,6 @@ export class InventoryComponent {
   @Input() public type: Type = Type.inventory;
   @Input() public items: Item[];
   @Input() public openItemSlots: number;
+  @Input() public maxItemSlots: number;
   @Output() itemClick: EventEmitter<Item> = new EventEmitter();
 }

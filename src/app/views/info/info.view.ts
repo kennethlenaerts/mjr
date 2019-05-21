@@ -13,6 +13,7 @@ import { Emitter, Emittable } from "@ngxs-labs/emitter";
         <app-inventory
           [items]="playerItems$ | async"
           [openItemSlots]="playerOpenItemSlots | async"
+          [maxItemSlots]="(playerStats$ | async)?.maxItemSlots"
           (itemClick)="itemClick($event)"
         ></app-inventory>
       </div>
