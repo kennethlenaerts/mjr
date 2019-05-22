@@ -1,3 +1,4 @@
+import dbSeed from '../assets/db.seed.json';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Item, Player } from '@app/models';
@@ -29,6 +30,15 @@ export class HttpService {
   }
 
   removePlayerItem(items): Observable<Player> {
-    return this.http.patch<Player>(`${this.url}/player`, { items: items });
+    return this.http.patch<Player>(`${this.url}/player`, { items });
+  }
+
+  updatePlayerHealth(health): Observable<Player> {
+    return this.http.patch<Player>(`${this.url}/player`, { health });
+  }
+
+  resetDb(): Observable<any> {
+    console.log(dbSeed.shop);
+    return this.http.post(`${this.url}/player`, dbSeed.player);
   }
 }

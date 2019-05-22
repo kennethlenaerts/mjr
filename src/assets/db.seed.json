@@ -1,0 +1,117 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "anvil",
+      "src": "/assets/icons/common_icon_anvil.png",
+      "value": 15,
+      "type": 3
+    },
+    {
+      "id": 2,
+      "name": "arrow",
+      "src": "/assets/icons/common_icon_arrow.png",
+      "value": 25,
+      "type": 2
+    },
+    {
+      "id": 3,
+      "name": "chicken",
+      "src": "/assets/icons/common_icon_chicken.png",
+      "value": 69,
+      "type": 3
+    },
+    {
+      "id": 4,
+      "name": "lucky",
+      "src": "/assets/icons/common_icon_lucky.png",
+      "value": 1,
+      "type": 3
+    },
+    {
+      "id": 5,
+      "name": "shield_A",
+      "src": "/assets/icons/common_icon_shield_A.png",
+      "value": 100,
+      "type": 2
+    },
+    {
+      "id": 6,
+      "name": "sword_B",
+      "src": "/assets/icons/common_icon_sword_B.png",
+      "value": 150,
+      "type": 2
+    },
+    {
+      "id": 7,
+      "name": "potion_red",
+      "src": "/assets/icons/common_icon_potion_red.png",
+      "value": 50,
+      "healthPoints": 1000,
+      "type": 1
+    },
+    {
+      "id": 8,
+      "name": "coin_01",
+      "src": "/assets/icons/shop_img_coin_01.png",
+      "value": 15,
+      "worth": 200,
+      "type": 4
+    },
+    {
+      "id": 9,
+      "name": "coin_02",
+      "src": "/assets/icons/shop_img_coin_02.png",
+      "value": 30,
+      "worth": 800,
+      "type": 4
+    },
+    {
+      "id": 10,
+      "name": "coin_03",
+      "src": "/assets/icons/shop_img_coin_03.png",
+      "value": 45,
+      "worth": 2000,
+      "type": 4
+    },
+    {
+      "id": 11,
+      "name": "soulgem_01",
+      "src": "/assets/icons/shop_img_soulgem_01.png",
+      "value": 15,
+      "worth": 20,
+      "type": 5
+    },
+    {
+      "id": 12,
+      "name": "soulgem_02",
+      "src": "/assets/icons/shop_img_soulgem_02.png",
+      "value": 30,
+      "worth": 20,
+      "type": 5
+    },
+    {
+      "id": 13,
+      "name": "soulgem_03",
+      "src": "/assets/icons/shop_img_soulgem_03.png",
+      "value": 45,
+      "worth": 20,
+      "type": 5
+    }
+  ],
+  "player": {
+    "userName": "LeEroYy jenKiNS",
+    "health": 420,
+    "maxHealth": 940,
+    "level": 69,
+    "attack": 7,
+    "defense": 14,
+    "hearts": 50,
+    "gold": 150,
+    "gem": 270,
+    "items": [3, 5, 6, 7],
+    "maxItemSlots": 7
+  },
+  "shop": [1, 2, 3, 4, 5, 6, 7],
+  "cashShop": [8, 9, 10, 11, 12, 13]
+}

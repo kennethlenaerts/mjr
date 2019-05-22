@@ -55,12 +55,15 @@ export class PlayerState {
   static updateHealth(
     { patchState, getState }: StateContext<PlayerStateModel>,
     { payload: healthUp }: { payload: number },
-  ): void {
+  ): Observable<Player> {
     const updatedHealth = getState().health + healthUp;
     const maxHealth = getState().maxHealth;
     const health = updatedHealth >= maxHealth ? maxHealth : updatedHealth;
 
-    patchState({ health });
+    return this._httpService.updatePlayerHealth(health).pipe(
+      tap((player: Player) => patchState({ health: player.health })),
+      take(1),
+    );
   }
 
   @Receiver()
@@ -73,10 +76,10 @@ export class PlayerState {
       item => item !== itemToDelete,
     );
 
-    patchState({ items: updatedItems });
-    console.log(updatedItems);
-
-    return this._httpService.removePlayerItem(updatedItems).pipe(take(1));
+    return this._httpService.removePlayerItem(updatedItems).pipe(
+      tap((player: Player) => patchState({ items: player.items })),
+      take(1),
+    );
   }
 
   @Receiver()

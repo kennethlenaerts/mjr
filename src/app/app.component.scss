@@ -1,9 +1,9 @@
 :host {
   display: grid;
   grid-template-areas:
-    'header'
-    'main'
-    'menu';
+    "header"
+    "main"
+    "menu";
   grid-template-rows: 200px 1fr 200px;
   height: 100%;
   justify-items: center;
@@ -32,4 +32,18 @@ app-footer {
 
 router-outlet {
   display: none;
+}
+
+button.reset {
+  background: hotpink;
+  padding: 0.5rem 2rem;
+  bottom: 14px;
+  position: fixed;
+  right: 15px;
+  border-radius: 0.2rem;
+  color: white;
+  font-size: 2rem;
+  &:hover {
+    cursor: pointer;
+  }
 }

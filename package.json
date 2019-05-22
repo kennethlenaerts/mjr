@@ -6,7 +6,8 @@
     "start": "ng serve --proxy-config proxy.conf.json",
     "server": "json-server db.json --watch --no-cors",
     "watch": "concurrently \"yarn start\" \"yarn server\"",
-    "prettier": "prettier"
+    "prettier": "prettier",
+    "resetdb": "git checkout -- db.json"
   },
   "private": true,
   "dependencies": {
