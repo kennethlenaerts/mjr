@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Item, Player, CashShopItem } from "./models";
+import { Item, Player } from "./models";
 import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
@@ -19,8 +19,8 @@ export class HttpService {
   }
 
   /** Retrieve all the cash shop items. */
-  public getCashShopItems(): Observable<CashShopItem[]> {
-    return this.http.get<CashShopItem[]>(`${this.url}/cashShop`);
+  public getCashShopItems(): Observable<number[]> {
+    return this.http.get<number[]>(`${this.url}/cashShop`);
   }
 
   /** Retrieve all players stats. */

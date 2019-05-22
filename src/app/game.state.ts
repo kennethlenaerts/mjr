@@ -2,7 +2,7 @@ import { HttpService } from "./http.service";
 import { State, Selector, StateContext, createSelector } from "@ngxs/store";
 import { Receiver, EmitterAction } from "@ngxs-labs/emitter";
 import { Injector } from "@angular/core";
-import { Item, CashShopItem } from "@app/models";
+import { Item } from "@app/models";
 import { Observable, combineLatest } from "rxjs";
 import { tap, take, switchMap } from "rxjs/operators";
 
@@ -10,7 +10,7 @@ export interface GameStateModel {
   items: Item[];
   itemsLoaded: boolean;
   shopItems: number[];
-  cashShopItems: CashShopItem[];
+  cashShopItems: number[];
 }
 
 const defaults: GameStateModel = {
@@ -40,12 +40,8 @@ export class GameState {
       this.httpService.getShopItems(),
       this.httpService.getCashShopItems(),
     ).pipe(
-      tap(
-        ([items, shopItems, cashShopItems]: [
-          Item[],
-          number[],
-          CashShopItem[]
-        ]) => patchState({ items, shopItems, cashShopItems }),
+      tap(([items, shopItems, cashShopItems]: [Item[], number[], number[]]) =>
+        patchState({ items, shopItems, cashShopItems }),
       ),
       tap(_ => patchState({ itemsLoaded: true })),
       take(1),
