@@ -1,10 +1,10 @@
-import { HttpService } from "./http.service";
-import { State, Selector, StateContext, createSelector } from "@ngxs/store";
-import { Receiver, EmitterAction } from "@ngxs-labs/emitter";
-import { Injector } from "@angular/core";
-import { Item } from "@app/models";
-import { Observable, combineLatest } from "rxjs";
-import { tap, take, switchMap } from "rxjs/operators";
+import { Injector } from '@angular/core';
+import { HttpService } from '@app/http.service';
+import { Item } from '@app/models';
+import { Receiver } from '@ngxs-labs/emitter';
+import { Selector, State, StateContext } from '@ngxs/store';
+import { combineLatest, Observable } from 'rxjs';
+import { take, tap } from 'rxjs/operators';
 
 export interface GameStateModel {
   items: Item[];

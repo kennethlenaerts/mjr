@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { Select } from "@ngxs/store";
-import { Observable } from "rxjs";
-import { Player, Item, ItemType } from "@app/models";
-import { PlayerState } from "@app/player.state";
-import { Emitter, Emittable } from "@ngxs-labs/emitter";
+import { Component } from '@angular/core';
+import { Item, ItemType, Player } from '@app/models';
+import { PlayerState } from '@app/player.state';
+import { Emittable, Emitter } from '@ngxs-labs/emitter';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 
 @Component({
   template: `
@@ -22,24 +22,16 @@ import { Emitter, Emittable } from "@ngxs-labs/emitter";
   styleUrls: ["info.view.scss"],
 })
 export class InfoView {
-  @Select(PlayerState.stats)
-  public playerStats$: Observable<Partial<Player>>;
+  ItemTypeEnum: typeof ItemType = ItemType;
 
-  @Select(PlayerState.items)
-  public playerItems$: Observable<Item[]>;
+  @Select(PlayerState.items) playerItems$: Observable<Item[]>;
+  @Select(PlayerState.openItemSlots) playerOpenItemSlots: Observable<number>;
+  @Select(PlayerState.stats) playerStats$: Observable<Partial<Player>>;
 
-  @Select(PlayerState.openItemSlots)
-  public playerOpenItemSlots: Observable<number>;
+  @Emitter(PlayerState.removeItem) removePlayerItem: Emittable<number>;
+  @Emitter(PlayerState.updateHealth) updatePlayerHealth: Emittable<number>;
 
-  @Emitter(PlayerState.updateHealth)
-  public updatePlayerHealth: Emittable<number>;
-
-  @Emitter(PlayerState.removeItem)
-  public removePlayerItem: Emittable<number>;
-
-  public ItemTypeEnum: typeof ItemType = ItemType;
-
-  public itemClick(item: Item) {
+  itemClick(item: Item): void {
     if (item.type == this.ItemTypeEnum.health) {
       this.updatePlayerHealth.emit(item.healthPoints);
       this.removePlayerItem.emit(item.id);

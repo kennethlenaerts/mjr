@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Item, Player } from "./models";
-import { Observable } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Item, Player } from '@app/models';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: "root" })
 export class HttpService {

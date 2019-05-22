@@ -1,11 +1,10 @@
-import { Emittable } from "@ngxs-labs/emitter";
-import { Component } from "@angular/core";
-import { Select } from "@ngxs/store";
-import { Observable } from "rxjs";
-import { PlayerState } from "@app/player.state";
-import { Type, Item, Player } from "@app/models";
-import { GameState } from "@app/game.state";
-import { Emitter } from "@ngxs-labs/emitter";
+import { Component } from '@angular/core';
+import { GameState } from '@app/game.state';
+import { Item, Player } from '@app/models';
+import { PlayerState } from '@app/player.state';
+import { Emittable, Emitter } from '@ngxs-labs/emitter';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 
 @Component({
   template: `
@@ -27,30 +26,16 @@ import { Emitter } from "@ngxs-labs/emitter";
   styleUrls: ["shop.view.scss"],
 })
 export class ShopView {
-  // public TypeEnum: typeof Type = Type;
+  @Select(GameState.shopItems) shopItems$: Observable<Item[]>;
+  @Select(PlayerState.items) playerItems$: Observable<Item[]>;
+  @Select(PlayerState.openItemSlots) playerOpenItemSlots: Observable<number>;
+  @Select(PlayerState.stats) playerStats$: Observable<Partial<Player>>;
 
-  @Select(PlayerState.stats)
-  public playerStats$: Observable<Partial<Player>>;
+  @Emitter(GameState.removeShopItem) removeShopItem: Emittable<number>;
+  @Emitter(PlayerState.addItem) addPlayerItem: Emittable<number>;
+  @Emitter(PlayerState.removeGold) removePlayerGold: Emittable<number>;
 
-  @Select(PlayerState.items)
-  public playerItems$: Observable<Item[]>;
-
-  @Select(GameState.shopItems)
-  public shopItems$: Observable<Item[]>;
-
-  @Select(PlayerState.openItemSlots)
-  public playerOpenItemSlots: Observable<number>;
-
-  @Emitter(GameState.removeShopItem)
-  public removeShopItem: Emittable<number>;
-
-  @Emitter(PlayerState.addItem)
-  public addPlayerItem: Emittable<number>;
-
-  @Emitter(PlayerState.removeGold)
-  public removePlayerGold: Emittable<number>;
-
-  public shopItemClick(item: Item) {
+  shopItemClick(item: Item) {
     this.removeShopItem.emit(item.id);
     this.addPlayerItem.emit(item.id);
     this.removePlayerGold.emit(item.value);

@@ -1,9 +1,7 @@
-import { ShopView } from "./views/shop/shop.view";
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-
-import { StartView, InfoView, CashShopView } from "./views";
-import { GameGuard, ItemsLoadedGuard, PlayerGuard } from "./game.guard";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { GameGuard, ItemsLoadedGuard, PlayerGuard } from '@app/game.guard';
+import { CashShopView, InfoView, ShopView, StartView } from '@app/views';
 
 const routes: Routes = [
   {

@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
-import { slider } from "./route-animations";
-import { Select } from "@ngxs/store";
-import { PlayerState } from "./player.state";
-import { Player } from "./models";
-import { Observable } from "rxjs";
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { Player } from '@app/models';
+import { PlayerState } from '@app/player.state';
+import { slider } from '@app/route-animations';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: "app-root",
@@ -20,8 +20,9 @@ import { Observable } from "rxjs";
   styleUrls: ["app.component.scss"],
   animations: [slider],
 })
-export class AppComponent implements OnInit {
-  @Select(PlayerState.stats) public playerStats$: Observable<Partial<Player>>;
+export class AppComponent {
+  @Select(PlayerState.stats)
+  public playerStats$: Observable<Partial<Player>>;
 
   public prepareRoute(outlet: RouterOutlet) {
     return (
@@ -30,6 +31,4 @@ export class AppComponent implements OnInit {
       outlet.activatedRouteData["animation"]
     );
   }
-
-  ngOnInit(): void {}
 }

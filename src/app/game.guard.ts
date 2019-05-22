@@ -1,14 +1,13 @@
-import { PlayerState } from "./player.state";
-import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate } from "@angular/router";
-import { Emitter, Emittable } from "@ngxs-labs/emitter";
-import { GameState } from "./game.state";
-import { Observable, of } from "rxjs";
-import { switchMap, catchError } from "rxjs/operators";
-import { Select, Store } from "@ngxs/store";
-import { Dispatch } from "@ngxs-labs/dispatch-decorator";
-import { Navigate } from "@ngxs/router-plugin";
-import { Player } from "./models";
+import { PlayerState } from './player.state';
+import { Injectable } from '@angular/core';
+import { CanActivate } from '@angular/router';
+import { GameState } from '@app/game.state';
+import { Player } from '@app/models';
+import { Emittable, Emitter } from '@ngxs-labs/emitter';
+import { Navigate } from '@ngxs/router-plugin';
+import { Select, Store } from '@ngxs/store';
+import { Observable, of } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 
 @Injectable({ providedIn: "root" })
 export class GameGuard implements CanActivate {

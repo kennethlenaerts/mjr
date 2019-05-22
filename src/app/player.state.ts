@@ -1,11 +1,11 @@
-import { HttpService } from "./http.service";
-import { State, Selector, StateContext, Store } from "@ngxs/store";
-import { Receiver } from "@ngxs-labs/emitter";
-import { Injector } from "@angular/core";
-import { Item, Player } from "./models";
-import { Observable } from "rxjs";
-import { tap, take } from "rxjs/operators";
-import { GameState } from "./game.state";
+import { Injector } from '@angular/core';
+import { GameState } from '@app/game.state';
+import { HttpService } from '@app/http.service';
+import { Item, Player } from '@app/models';
+import { Receiver } from '@ngxs-labs/emitter';
+import { Selector, State, StateContext, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { take, tap } from 'rxjs/operators';
 
 export interface PlayerStateModel extends Player {
   playerLoaded: boolean;

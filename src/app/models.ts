@@ -1,16 +1,16 @@
+export enum Type {
+  cashShop = 1,
+  inventory = 2,
+  shop = 3,
+  status = 4,
+}
+
 export enum ItemType {
   health = 1,
   weapon = 2,
   misc = 3,
   coin = 4,
   soulgem = 5,
-}
-
-export enum Type {
-  cashShop,
-  inventory,
-  shop,
-  status,
 }
 
 export interface Item {
