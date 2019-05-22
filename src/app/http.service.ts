@@ -9,22 +9,26 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   /** Retrieve all possible game items. */
-  public getItems(): Observable<Item[]> {
+  getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(`${this.url}/items`);
   }
 
   /** Retrieve all the shop items. */
-  public getShopItems(): Observable<number[]> {
+  getShopItems(): Observable<number[]> {
     return this.http.get<number[]>(`${this.url}/shop`);
   }
 
   /** Retrieve all the cash shop items. */
-  public getCashShopItems(): Observable<number[]> {
+  getCashShopItems(): Observable<number[]> {
     return this.http.get<number[]>(`${this.url}/cashShop`);
   }
 
   /** Retrieve all players stats. */
-  public getPlayerStats(): Observable<Player> {
+  getPlayerStats(): Observable<Player> {
     return this.http.get<Player>(`${this.url}/player`);
+  }
+
+  removePlayerItem(items): Observable<Player> {
+    return this.http.patch<Player>(`${this.url}/player`, { items: items });
   }
 }

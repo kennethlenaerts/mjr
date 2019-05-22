@@ -67,13 +67,16 @@ export class PlayerState {
   static removeItem(
     { patchState, getState }: StateContext<PlayerStateModel>,
     { payload: itemToDelete }: { payload: number },
-  ): void {
+  ): Observable<Player> {
     const currentItems = getState().items;
     const updatedItems: number[] = currentItems.filter(
       item => item !== itemToDelete,
     );
 
     patchState({ items: updatedItems });
+    console.log(updatedItems);
+
+    return this._httpService.removePlayerItem(updatedItems).pipe(take(1));
   }
 
   @Receiver()
