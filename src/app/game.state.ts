@@ -25,20 +25,20 @@ const defaults: GameStateModel = {
   defaults,
 })
 export class GameState {
-  private static httpService: HttpService;
+  static _httpService: HttpService;
 
   constructor(injector: Injector) {
-    GameState.httpService = injector.get<HttpService>(HttpService);
+    GameState._httpService = injector.get<HttpService>(HttpService);
   }
 
   @Receiver()
-  public static loadAllItems({
+  static loadAllItems({
     patchState,
   }: StateContext<GameStateModel>): Observable<any> {
     return combineLatest(
-      this.httpService.getItems(),
-      this.httpService.getShopItems(),
-      this.httpService.getCashShopItems(),
+      this._httpService.getItems(),
+      this._httpService.getShopItems(),
+      this._httpService.getCashShopItems(),
     ).pipe(
       tap(([items, shopItems, cashShopItems]: [Item[], number[], number[]]) =>
         patchState({ items, shopItems, cashShopItems }),
@@ -49,12 +49,9 @@ export class GameState {
   }
 
   @Receiver()
-  public static removeShopItem(
-    { patchState, getState }: StateContext<GameStateModel>,
-    { payload: itemToDelete }: { payload: number },
-  ): void {
+  static removeShopItem({ patchState, getState }, { payload: itemToDelete }) {
     const currentShopItems = getState().shopItems;
-    const updatedShopItems: number[] = currentShopItems.filter(
+    const updatedShopItems = currentShopItems.filter(
       item => item !== itemToDelete,
     );
 
@@ -62,17 +59,17 @@ export class GameState {
   }
 
   @Selector()
-  public static itemsLoaded(state: GameStateModel): boolean {
+  static itemsLoaded(state: GameStateModel): boolean {
     return state.itemsLoaded;
   }
 
   @Selector()
-  public static items(state: GameStateModel): Item[] {
+  static items(state: GameStateModel): Item[] {
     return state.items;
   }
 
   @Selector()
-  public static shopItems(state: GameStateModel) {
+  static shopItems(state: GameStateModel) {
     const allItems: Item[] = state.items;
     return state.shopItems.map((itemId: number) => {
       for (const item of allItems) if (item.id === itemId) return item;
@@ -80,7 +77,7 @@ export class GameState {
   }
 
   @Selector()
-  public static cashShopItems(state: GameStateModel) {
+  static cashShopItems(state: GameStateModel) {
     const allItems: Item[] = state.items;
     return state.cashShopItems.map((itemId: number) => {
       for (const item of allItems) if (item.id === itemId) return item;

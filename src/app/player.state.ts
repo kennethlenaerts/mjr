@@ -31,20 +31,20 @@ const defaults: PlayerStateModel = {
   defaults,
 })
 export class PlayerState {
-  private static httpService: HttpService;
-  private static store: Store;
+  static _httpService: HttpService;
+  static _store: Store;
 
   constructor(injector: Injector) {
-    PlayerState.httpService = injector.get<HttpService>(HttpService);
-    PlayerState.store = injector.get<Store>(Store);
+    PlayerState._httpService = injector.get<HttpService>(HttpService);
+    PlayerState._store = injector.get<Store>(Store);
   }
 
   /** Load the player object in memory. */
   @Receiver()
-  public static loadPlayerStats({
+  static loadPlayerStats({
     patchState,
   }: StateContext<PlayerStateModel>): Observable<Player> {
-    return this.httpService.getPlayerStats().pipe(
+    return this._httpService.getPlayerStats().pipe(
       tap((player: Player) => patchState({ ...player })),
       tap(_ => patchState({ playerLoaded: true })),
       take(1),
@@ -52,7 +52,7 @@ export class PlayerState {
   }
 
   @Receiver()
-  public static updateHealth(
+  static updateHealth(
     { patchState, getState }: StateContext<PlayerStateModel>,
     { payload: healthUp }: { payload: number },
   ): void {
@@ -64,7 +64,7 @@ export class PlayerState {
   }
 
   @Receiver()
-  public static removeItem(
+  static removeItem(
     { patchState, getState }: StateContext<PlayerStateModel>,
     { payload: itemToDelete }: { payload: number },
   ): void {
@@ -77,7 +77,7 @@ export class PlayerState {
   }
 
   @Receiver()
-  public static addItem(
+  static addItem(
     { patchState, getState }: StateContext<PlayerStateModel>,
     { payload: itemToAdd }: { payload: number },
   ): void {
@@ -86,7 +86,7 @@ export class PlayerState {
   }
 
   @Receiver()
-  public static addGold(
+  static addGold(
     { patchState, getState }: StateContext<PlayerStateModel>,
     { payload: amount }: { payload: number },
   ): void {
@@ -95,7 +95,7 @@ export class PlayerState {
   }
 
   @Receiver()
-  public static removeGold(
+  static removeGold(
     { patchState, getState }: StateContext<PlayerStateModel>,
     { payload: amount }: { payload: number },
   ): void {
@@ -104,7 +104,7 @@ export class PlayerState {
   }
 
   @Receiver()
-  public static removeGem(
+  static removeGem(
     { patchState, getState }: StateContext<PlayerStateModel>,
     { payload: amount }: { payload: number },
   ): void {
@@ -113,22 +113,21 @@ export class PlayerState {
   }
 
   @Selector()
-  public static stats(state: PlayerStateModel): Partial<Player> {
+  static stats(state: PlayerStateModel): Partial<Player> {
     const { items, ...playerStats } = state;
     return playerStats;
   }
 
-  /** Map the players inventory item ids to the item values */
   @Selector()
-  public static items(state: PlayerStateModel) {
-    const allGameItems: Item[] = this.store.selectSnapshot(GameState.items);
+  static items(state: PlayerStateModel) {
+    const allGameItems: Item[] = this._store.selectSnapshot(GameState.items);
     return state.items.map((itemId: number) => {
       for (const item of allGameItems) if (item.id === itemId) return item;
     });
   }
 
   @Selector()
-  public static openItemSlots(state: PlayerStateModel) {
+  static openItemSlots(state: PlayerStateModel) {
     return state.maxItemSlots - state.items.length;
   }
 }
