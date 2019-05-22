@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { Type, Item } from "@app/models";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Item, Type } from '@app/models';
 
 @Component({
   selector: "app-shop",
@@ -16,9 +16,9 @@ import { Type, Item } from "@app/models";
   styleUrls: ["shop.component.scss"],
 })
 export class ShopComponent {
-  public TypeEnum: typeof Type = Type;
+  TypeEnum: typeof Type = Type;
 
-  @Input() public type: Type = Type.shop;
-  @Input() public items: Item[];
+  @Input() type: Type = Type.shop;
+  @Input() items: Item[];
   @Output() buttonClick: EventEmitter<Item> = new EventEmitter();
 }

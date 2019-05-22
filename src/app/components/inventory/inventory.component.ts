@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { Type, Item } from "@app/models";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Item, Type } from '@app/models';
 
 @Component({
   selector: "app-inventory",
@@ -34,12 +34,12 @@ import { Type, Item } from "@app/models";
   styleUrls: ["inventory.component.scss"],
 })
 export class InventoryComponent {
-  public TypeEnum: typeof Type = Type;
+  TypeEnum: typeof Type = Type;
 
-  @Input() public title: string = "Inventory";
-  @Input() public type: Type = Type.inventory;
-  @Input() public items: Item[];
-  @Input() public openItemSlots: number;
-  @Input() public maxItemSlots: number;
+  @Input() title: string = "Inventory";
+  @Input() type: Type = Type.inventory;
+  @Input() items: Item[];
+  @Input() openItemSlots: number;
+  @Input() maxItemSlots: number;
   @Output() itemClick: EventEmitter<Item> = new EventEmitter();
 }

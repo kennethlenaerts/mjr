@@ -1,13 +1,5 @@
-import {
-  Component,
-  Input,
-  ViewChild,
-  ElementRef,
-  Renderer2,
-  SimpleChanges,
-  OnChanges,
-} from "@angular/core";
-import { Player } from "@app/models";
+import { Component, ElementRef, Input, OnChanges, Renderer2, ViewChild } from '@angular/core';
+import { Player } from '@app/models';
 
 @Component({
   selector: "app-user-gage",
@@ -24,26 +16,23 @@ import { Player } from "@app/models";
   styleUrls: ["user-gage.component.scss"],
 })
 export class UserGageComponent implements OnChanges {
-  private oldHealth: number = 0;
-  @Input()
-  public playerStats: Partial<Player>;
+  _oldHealth: number = 0;
+  @Input() playerStats: Partial<Player>;
+  @ViewChild("barHp") _barHp: ElementRef<HTMLDivElement>;
 
-  @ViewChild("barHp")
-  private barHp: ElementRef<HTMLDivElement>;
-
-  constructor(private renderer: Renderer2) {}
+  constructor(private _renderer: Renderer2) {}
 
   ngOnChanges() {
-    if (this.playerStats.health !== this.oldHealth) {
+    if (this.playerStats.health !== this._oldHealth) {
       const currentWidth = this.playerStats.health / 4;
 
-      this.renderer.setStyle(
-        this.barHp.nativeElement,
+      this._renderer.setStyle(
+        this._barHp.nativeElement,
         "width",
         `${currentWidth}px`,
       );
 
-      this.oldHealth = this.playerStats.health;
+      this._oldHealth = this.playerStats.health;
     }
   }
 }

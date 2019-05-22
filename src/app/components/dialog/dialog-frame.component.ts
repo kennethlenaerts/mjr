@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-dialog-frame',
+  selector: "app-dialog-frame",
   template: `
     <div class="dialog">
       <div class="corner top-left"></div>
@@ -15,10 +15,6 @@ import { Component, OnInit } from '@angular/core';
       <div class="border horizontal right"></div>
     </div>
   `,
-  styleUrls: ['dialog-frame.component.scss']
+  styleUrls: ["dialog-frame.component.scss"],
 })
-export class DialogFrameComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class DialogFrameComponent {}

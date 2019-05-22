@@ -1,5 +1,5 @@
-import { Router, Event, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Event, NavigationEnd, Router } from '@angular/router';
 
 interface Button {
   badge?: string;
@@ -10,37 +10,37 @@ interface Button {
 
 const buttons: Button[] = [
   {
-    routerLink: '/',
-    icon: 'mission'
+    routerLink: "/",
+    icon: "mission",
   },
   {
-    routerLink: '/info',
-    icon: 'treasure'
+    routerLink: "/info",
+    icon: "treasure",
   },
   {
-    routerLink: '/shop',
-    icon: 'shop',
-    badge: 'new'
+    routerLink: "/shop",
+    icon: "shop",
+    badge: "new",
   },
   {
-    routerLink: '/cash-shop',
-    icon: 'gem_chest',
-    badge: 'count',
-    value: '5'
+    routerLink: "/cash-shop",
+    icon: "gem_chest",
+    badge: "count",
+    value: "5",
   },
   {
-    routerLink: '/achievements',
-    icon: 'trophy',
-    badge: 'alert'
+    routerLink: "/achievements",
+    icon: "trophy",
+    badge: "alert",
   },
   {
-    routerLink: '/settings',
-    icon: 'setting'
-  }
+    routerLink: "/settings",
+    icon: "setting",
+  },
 ];
 
 @Component({
-  selector: 'app-footer',
+  selector: "app-footer",
   template: `
     <app-menu-button
       *ngFor="let button of buttons"
@@ -52,22 +52,19 @@ const buttons: Button[] = [
       type="menu"
     ></app-menu-button>
   `,
-  styleUrls: ['footer.component.scss']
+  styleUrls: ["footer.component.scss"],
 })
 export class FooterComponent implements OnInit {
-  public url: string;
-  public buttons: Button[];
+  url: string = window.location.pathname;
+  buttons: Button[] = buttons;
 
-  constructor(private router: Router) {}
+  constructor(private _router: Router) {}
 
   ngOnInit() {
-    this.router.events.subscribe((event: Event) => {
+    this._router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this.url = event.url;
       }
     });
-    this.url = window.location.pathname;
-
-    this.buttons = buttons;
   }
 }

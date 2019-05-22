@@ -1,5 +1,5 @@
-import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
-import { Player } from "@app/models";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Player } from '@app/models';
 
 @Component({
   selector: "app-user-stats",
@@ -23,6 +23,6 @@ import { Player } from "@app/models";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserStatsComponent {
-  @Input() public playerStats: Partial<Player>;
-  public userStats: string[] = ["attack", "defense", "health", "gold", "gem"];
+  userStats: string[] = ["attack", "defense", "health", "gold", "gem"];
+  @Input() playerStats: Partial<Player>;
 }

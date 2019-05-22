@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
-import { Type } from "@app/models";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Type } from '@app/models';
 
 @Component({
   selector: "app-button",
@@ -25,16 +25,16 @@ import { Type } from "@app/models";
   styleUrls: ["button.component.scss"],
 })
 export class ButtonComponent implements OnInit {
+  TypeEnum: typeof Type = Type;
+  isShop: boolean = false;
+  isCashShop: boolean = false;
+
   @Input() type: Type;
   @Input() icon: string;
   @Input() badge: string;
   @Input() value: string;
   @Input() active: boolean;
   @Output() buttonClick: EventEmitter<void> = new EventEmitter();
-
-  public TypeEnum: typeof Type = Type;
-  public isShop: boolean = false;
-  public isCashShop: boolean = false;
 
   ngOnInit() {
     this.isCashShop = this.type === this.TypeEnum.cashShop;

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Type } from "@app/models";
+import { Component, Input } from '@angular/core';
+import { Type } from '@app/models';
 
 @Component({
   selector: "app-status-frame",
@@ -10,10 +10,8 @@ import { Type } from "@app/models";
   `,
   styleUrls: ["status-frame.component.scss"],
 })
-export class StatusFrameComponent implements OnInit {
+export class StatusFrameComponent {
+  TypeEnum: typeof Type = Type;
   @Input() value: string | number;
   @Input() icon: string;
-  public TypeEnum: typeof Type = Type;
-
-  ngOnInit() {}
 }

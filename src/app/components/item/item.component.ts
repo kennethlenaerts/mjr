@@ -1,12 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  HostBinding,
-  Output,
-  EventEmitter,
-} from "@angular/core";
-import { Type, Item } from "@app/models";
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
+import { Item, Type } from '@app/models';
 
 @Component({
   selector: "app-item",
@@ -16,10 +9,6 @@ import { Type, Item } from "@app/models";
       [ngClass]="{ big: type === TypeEnum.cashShop, isShop: isShop }"
       (click)="itemClick.emit(item)"
     />
-
-    <!--
-    <h2 *ngIf="type === TypeEnum.cashShop">1000</h2>
-    -->
 
     <app-button
       *ngIf="isShop"
@@ -32,8 +21,8 @@ import { Type, Item } from "@app/models";
   styleUrls: ["item.component.scss"],
 })
 export class ItemComponent implements OnInit {
-  public isShop: boolean = false;
-  public TypeEnum: typeof Type = Type;
+  isShop: boolean = false;
+  TypeEnum: typeof Type = Type;
 
   @Input() item: Item;
   @Input() type: Type = Type.inventory;
@@ -45,8 +34,6 @@ export class ItemComponent implements OnInit {
 
   ngOnInit() {
     this.big = this.type === this.TypeEnum.cashShop;
-
-    if (this.type === Type.cashShop || this.type === Type.shop)
-      this.isShop = true;
+    this.isShop = this.type === Type.cashShop || this.type === Type.shop;
   }
 }
