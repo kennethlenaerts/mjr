@@ -1,10 +1,9 @@
 import { Emittable } from "@ngxs-labs/emitter";
 import { Component } from "@angular/core";
-import { Type } from "@app/types";
 import { Select } from "@ngxs/store";
 import { Observable } from "rxjs";
 import { PlayerState } from "@app/player.state";
-import { Item, Player } from "@app/models";
+import { Type, Item, Player } from "@app/models";
 import { GameState } from "@app/game.state";
 import { Emitter } from "@ngxs-labs/emitter";
 

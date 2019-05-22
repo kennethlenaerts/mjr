@@ -1,10 +1,9 @@
 import { PlayerState } from "./../../player.state";
-import { Type } from "@app/types";
 import { Component } from "@angular/core";
 import { Select } from "@ngxs/store";
 import { GameState } from "@app/game.state";
 import { Observable } from "rxjs";
-import { Item } from "@app/models";
+import { Type, Item } from "@app/models";
 import { Emitter, Emittable } from "@ngxs-labs/emitter";
 
 @Component({

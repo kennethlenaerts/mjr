@@ -6,8 +6,7 @@ import {
   Output,
   EventEmitter,
 } from "@angular/core";
-import { Type } from "@app/types";
-import { Item } from "@app/models";
+import { Type, Item } from "@app/models";
 
 @Component({
   selector: "app-item",

@@ -1,6 +1,5 @@
-import { Type } from "@app/types";
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { Item } from "@app/models";
+import { Type, Item } from "@app/models";
 
 @Component({
   selector: "app-shop",

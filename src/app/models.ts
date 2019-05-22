@@ -6,6 +6,13 @@ export enum ItemType {
   soulgem = 5,
 }
 
+export enum Type {
+  cashShop,
+  inventory,
+  shop,
+  status,
+}
+
 export interface Item {
   id: number;
   name: string;

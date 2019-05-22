@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
-import { Type } from "@app/types";
+import { Type } from "@app/models";
 
 @Component({
   selector: "app-button",
