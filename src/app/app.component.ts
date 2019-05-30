@@ -11,15 +11,19 @@ import { take } from 'rxjs/operators';
 @Component({
   selector: "app-root",
   template: `
+    <!--
     <app-header [playerStats]="playerStats$ | async"></app-header>
+    -->
 
     <main [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </main>
 
+    <!--
     <app-footer></app-footer>
 
     <button *ngIf="devTools" (click)="resetDb()" class="reset">Reset DB</button>
+    -->
   `,
   styleUrls: ["app.component.scss"],
   animations: [slider],

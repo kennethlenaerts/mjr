@@ -1,4 +1,10 @@
-export * from "./game.actions";
-export * from "./game.effects";
-export * from "./game.reducer";
-export * from "./game.selectors";
+import { gameReducer, GameStateModel } from './game';
+import { ActionReducerMap } from '@ngrx/store';
+
+export interface State {
+  game: GameStateModel;
+}
+
+export const reducers: ActionReducerMap<State> = {
+  game: gameReducer,
+};

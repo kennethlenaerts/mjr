@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GameGuard, ItemsLoadedGuard, PlayerGuard } from '@app/game.guard';
+import { GameGuard } from '@app/game.guard';
 import { CashShopView, InfoView, ShopView, StartView } from '@app/views';
 
 const routes: Routes = [
@@ -8,28 +8,29 @@ const routes: Routes = [
     path: "info",
     component: InfoView,
     data: { animation: "info" },
-    canActivate: [ItemsLoadedGuard],
+    // canActivate: [ItemsLoadedGuard],
     // canActivate: [GameGuard, PlayerGuard],
   },
   {
     path: "shop",
     component: ShopView,
     data: { animation: "shop" },
-    canActivate: [ItemsLoadedGuard],
+    // canActivate: [ItemsLoadedGuard],
     // canActivate: [GameGuard, PlayerGuard],
   },
   {
     path: "cash-shop",
     component: CashShopView,
     data: { animation: "cash-shop" },
-    canActivate: [ItemsLoadedGuard],
+    // canActivate: [ItemsLoadedGuard],
     // canActivate: [GameGuard, PlayerGuard],
   },
   {
     path: "",
     component: StartView,
     data: { animation: "start" },
-    canActivate: [GameGuard, PlayerGuard],
+    // canActivate: [GameGuard, PlayerGuard],
+    canActivate: [GameGuard],
   },
   { path: "**", redirectTo: "/" },
 ];

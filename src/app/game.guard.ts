@@ -1,55 +1,58 @@
-import { PlayerState } from './player.state';
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { GameState } from '@app/game.state';
-import { Player } from '@app/models';
-import { Emittable, Emitter } from '@ngxs-labs/emitter';
-import { Navigate } from '@ngxs/router-plugin';
-import { Select, Store } from '@ngxs/store';
+import { State } from '@app/state';
+import { LoadAllItems, selectItemsLoaded } from '@app/state/game';
+import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { catchError, switchMap } from 'rxjs/operators';
+import { catchError, filter, switchMap, take, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: "root" })
 export class GameGuard implements CanActivate {
-  @Emitter(GameState.loadAllItems)
-  public loadAllItems: Emittable<number>;
+  constructor(private store: Store<State>) {}
 
   canActivate(): Observable<boolean> {
-    return this.loadAllItems.emit().pipe(
-      switchMap(() => of(true)),
-      catchError(() => of(false)),
-    );
-  }
-}
-
-@Injectable({ providedIn: "root" })
-export class PlayerGuard implements CanActivate {
-  @Emitter(PlayerState.loadPlayerStats)
-  public loadPlayerStats: Emittable<Player>;
-
-  canActivate(): Observable<boolean> {
-    return this.loadPlayerStats.emit().pipe(
-      switchMap(() => of(true)),
-      catchError(() => of(false)),
-    );
-  }
-}
-
-@Injectable({ providedIn: "root" })
-export class ItemsLoadedGuard implements CanActivate {
-  @Select(GameState.itemsLoaded) itemsLoaded$: Observable<boolean>;
-
-  constructor(private store: Store) {}
-
-  canActivate(): Observable<boolean> {
-    return this.itemsLoaded$.pipe(
-      switchMap(itemsLoaded => {
-        if (!itemsLoaded) {
-          this.store.dispatch(new Navigate(["/"]));
+    return this.store.select(selectItemsLoaded).pipe(
+      tap(loaded => {
+        if (!loaded) {
+          this.store.dispatch(new LoadAllItems());
         }
-        return of(true);
       }),
+      filter(loaded => loaded),
+      take(1),
+      switchMap(() => of(true)),
       catchError(() => of(false)),
     );
   }
 }
+
+// @Injectable({ providedIn: "root" })
+// export class PlayerGuard implements CanActivate {
+//   @Emitter(PlayerState.loadPlayerStats)
+//   public loadPlayerStats: Emittable<Player>;
+
+//   canActivate(): Observable<boolean> {
+//     return this.loadPlayerStats.emit().pipe(
+//       switchMap(() => of(true)),
+//       catchError(() => of(false)),
+//     );
+//   }
+// }
+
+// @Injectable({ providedIn: "root" })
+// export class ItemsLoadedGuard implements CanActivate {
+//   @Select(GameState.itemsLoaded) itemsLoaded$: Observable<boolean>;
+
+//   constructor(private store: Store) {}
+
+//   canActivate(): Observable<boolean> {
+//     return this.itemsLoaded$.pipe(
+//       switchMap(itemsLoaded => {
+//         if (!itemsLoaded) {
+//           this.store.dispatch(new Navigate(["/"]));
+//         }
+//         return of(true);
+//       }),
+//       catchError(() => of(false)),
+//     );
+//   }
+// }
