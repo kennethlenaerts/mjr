@@ -1,9 +1,14 @@
+import { selectPlayerOpenItemSlots, selectPlayerStats } from './../../state/player/player.selector';
 import { Component } from '@angular/core';
 import { GameState } from '@app/game.state';
 import { Item, Player } from '@app/models';
 import { PlayerState } from '@app/player.state';
+import { State } from '@app/state';
+import { RemoveShopItem } from '@app/state/game';
+import { selectShopItems } from '@app/state/game/game.selectors';
+import { AddPlayerItem, RemovePlayerGold, selectPlayerItems } from '@app/state/player';
+import { Store } from '@ngrx/store';
 import { Emittable, Emitter } from '@ngxs-labs/emitter';
-import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,7 +23,7 @@ import { Observable } from 'rxjs';
     <app-dialog title="inventory">
       <app-inventory
         [items]="playerItems$ | async"
-        [openItemSlots]="playerOpenItemSlots | async"
+        [openItemSlots]="playerOpenItemSlots$ | async"
         [maxItemSlots]="(playerStats$ | async)?.maxItemSlots"
       ></app-inventory>
     </app-dialog>
@@ -26,18 +31,25 @@ import { Observable } from 'rxjs';
   styleUrls: ["shop.view.scss"],
 })
 export class ShopView {
-  @Select(GameState.shopItems) shopItems$: Observable<Item[]>;
-  @Select(PlayerState.items) playerItems$: Observable<Item[]>;
-  @Select(PlayerState.openItemSlots) playerOpenItemSlots: Observable<number>;
-  @Select(PlayerState.stats) playerStats$: Observable<Partial<Player>>;
+  shopItems$: Observable<Item[]>;
+  playerItems$: Observable<Item[]>;
+  playerOpenItemSlots$: Observable<number>;
+  playerStats$: Observable<Partial<Player>>;
 
   @Emitter(GameState.removeShopItem) removeShopItem: Emittable<number>;
   @Emitter(PlayerState.addItem) addPlayerItem: Emittable<number>;
   @Emitter(PlayerState.removeGold) removePlayerGold: Emittable<number>;
 
+  constructor(private _store: Store<State>) {
+    this.shopItems$ = _store.select(selectShopItems);
+    this.playerItems$ = _store.select(selectPlayerItems);
+    this.playerOpenItemSlots$ = _store.select(selectPlayerOpenItemSlots);
+    this.playerStats$ = _store.select(selectPlayerStats);
+  }
+
   shopItemClick(item: Item) {
-    this.removeShopItem.emit(item.id);
-    this.addPlayerItem.emit(item.id);
-    this.removePlayerGold.emit(item.value);
+    this._store.dispatch(new RemoveShopItem(item.id));
+    this._store.dispatch(new AddPlayerItem(item.id));
+    this._store.dispatch(new RemovePlayerGold(item.value));
   }
 }

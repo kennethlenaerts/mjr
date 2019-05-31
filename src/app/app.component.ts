@@ -1,10 +1,10 @@
 import { HttpService } from './http.service';
-import { State } from './state';
 import { selectPlayerStats } from './state/player';
 import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Player } from '@app/models';
 import { slider } from '@app/route-animations';
+import { State } from '@app/state';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -34,8 +34,8 @@ export class AppComponent {
     this.devTools = !this.devTools;
   }
 
-  constructor(private _httpService: HttpService, private store: Store<State>) {
-    this.playerStats$ = store.pipe(select(selectPlayerStats));
+  constructor(private _httpService: HttpService, private _store: Store<State>) {
+    this.playerStats$ = _store.pipe(select(selectPlayerStats));
   }
 
   prepareRoute(outlet: RouterOutlet) {

@@ -1,4 +1,11 @@
-import { GameAction, LOAD_ALL_ITEMS, LOAD_ALL_ITEMS_SUCCESS, REMOVE_SHOP_ITEM } from './game.actions';
+import {
+  GameAction,
+  LOAD_ALL_ITEMS,
+  LOAD_ALL_ITEMS_SUCCESS,
+  LOAD_CASH_SHOP_ITEMS_SUCCESS,
+  LOAD_SHOP_ITEMS_SUCCESS,
+  REMOVE_SHOP_ITEM,
+} from './game.actions';
 import { Item } from '@app/models';
 
 export interface GameStateModel {
@@ -29,6 +36,24 @@ export function gameReducer(
       return {
         ...state,
         items,
+        itemsLoaded: true,
+      };
+    }
+
+    case LOAD_SHOP_ITEMS_SUCCESS: {
+      const shopItems = action.payload;
+      return {
+        ...state,
+        shopItems,
+        itemsLoaded: true,
+      };
+    }
+
+    case LOAD_CASH_SHOP_ITEMS_SUCCESS: {
+      const cashShopItems = action.payload;
+      return {
+        ...state,
+        cashShopItems,
         itemsLoaded: true,
       };
     }

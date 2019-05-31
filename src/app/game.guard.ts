@@ -1,3 +1,4 @@
+import { LoadCashShopItems, LoadShopItems } from './state/game/game.actions';
 import { LoadPlayerStats } from './state/player/player.actions';
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
@@ -16,6 +17,8 @@ export class GameGuard implements CanActivate {
     return this.store.select(selectItemsLoaded).pipe(
       tap(loaded => {
         if (!loaded) this.store.dispatch(new LoadAllItems());
+        if (!loaded) this.store.dispatch(new LoadShopItems());
+        if (!loaded) this.store.dispatch(new LoadCashShopItems());
       }),
       filter(loaded => loaded),
       take(1),
@@ -40,13 +43,6 @@ export class PlayerGuard implements CanActivate {
       catchError(_ => of(false)),
     );
   }
-
-  // canActivate(): Observable<boolean> {
-  //   return this.loadPlayerStats.emit().pipe(
-  //     switchMap(() => of(true)),
-  //     catchError(() => of(false)),
-  //   );
-  // }
 }
 
 // @Injectable({ providedIn: "root" })

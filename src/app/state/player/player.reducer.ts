@@ -1,13 +1,13 @@
 import {
-  ADD_GOLD,
-  ADD_ITEM,
+  ADD_PLAYER_GOLD,
+  ADD_PLAYER_ITEM,
   LOAD_PLAYER_STATS,
   LOAD_PLAYER_STATS_SUCCESS,
   PlayerAction,
-  REMOVE_GEM,
-  REMOVE_GOLD,
-  REMOVE_ITEM,
-  UPDATE_HEALTH,
+  REMOVE_PLAYER_GEM,
+  REMOVE_PLAYER_GOLD,
+  REMOVE_PLAYER_ITEM,
+  UPDATE_PLAYER_HEALTH,
 } from './player.actions';
 import { Player } from '@app/models';
 
@@ -49,7 +49,7 @@ export function playerReducer(
       };
     }
 
-    case UPDATE_HEALTH: {
+    case UPDATE_PLAYER_HEALTH: {
       const healthUp = action.payload;
       const updatedHealth = state.health + healthUp;
       const maxHealth = state.maxHealth;
@@ -61,7 +61,7 @@ export function playerReducer(
       };
     }
 
-    case REMOVE_ITEM: {
+    case REMOVE_PLAYER_ITEM: {
       const itemToDelete = action.payload;
       const currentItems = state.items;
       const updatedItems: number[] = currentItems.filter(
@@ -71,25 +71,25 @@ export function playerReducer(
       return { ...state, items: updatedItems };
     }
 
-    case ADD_ITEM: {
+    case ADD_PLAYER_ITEM: {
       const itemToAdd = action.payload;
       const updatedItems: number[] = [...state.items, itemToAdd];
       return { ...state, items: updatedItems };
     }
 
-    case ADD_GOLD: {
+    case ADD_PLAYER_GOLD: {
       const amount = action.payload;
       const updatedGold: number = state.gold + amount;
       return { ...state, gold: updatedGold };
     }
 
-    case REMOVE_GOLD: {
+    case REMOVE_PLAYER_GOLD: {
       const amount = action.payload;
       const updatedGold: number = state.gold - amount;
       return { ...state, gold: updatedGold };
     }
 
-    case REMOVE_GEM: {
+    case REMOVE_PLAYER_GEM: {
       const amount = action.payload;
       const updatedGem: number = state.gem - amount;
       return { ...state, gem: updatedGem };
