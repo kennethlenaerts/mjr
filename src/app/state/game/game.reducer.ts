@@ -1,4 +1,4 @@
-import { GameAction, LOAD_ALL_ITEMS, LOAD_ALL_ITEMS_SUCCESS } from './game.actions';
+import { GameAction, LOAD_ALL_ITEMS, LOAD_ALL_ITEMS_SUCCESS, REMOVE_SHOP_ITEM } from './game.actions';
 import { Item } from '@app/models';
 
 export interface GameStateModel {
@@ -33,24 +33,21 @@ export function gameReducer(
       };
     }
 
+    case REMOVE_SHOP_ITEM: {
+      const itemToDelete = action.payload;
+      const currentShopItems = state.shopItems;
+      const updatedShopItems = currentShopItems.filter(
+        item => item !== itemToDelete,
+      );
+
+      return {
+        ...state,
+        shopItems: updatedShopItems,
+      };
+    }
+
     default: {
       return state;
     }
-
-    // case GameActions.ActionTypes.RemoveShopItem: {
-    //   const itemToDelete = action.payload.itemToDelete;
-
-    //   const currentShopItems = state.shopItems;
-    //   const updatedShopItems = currentShopItems.filter(
-    //     item => item !== itemToDelete,
-    //   );
-
-    //   return {
-    //     ...state,
-    //     shopItems: updatedShopItems,
-    //   };
-    // }
   }
 }
-
-export const getItemsLoaded = (state: GameStateModel) => state.itemsLoaded;

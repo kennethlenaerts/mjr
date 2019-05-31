@@ -38,10 +38,18 @@ export class LoadCashShopItemsSuccess implements Action {
   constructor(public payload: number[]) {}
 }
 
+export const REMOVE_SHOP_ITEM = "[Game] Remove shop item";
+
+export class RemoveShopItem implements Action {
+  readonly type = REMOVE_SHOP_ITEM;
+  constructor(public payload: number) {}
+}
+
 export type GameAction =
   | LoadAllItems
   | LoadAllItemsSuccess
   | LoadShopItems
   | LoadShopItemsSuccess
   | LoadCashShopItems
-  | LoadCashShopItemsSuccess;
+  | LoadCashShopItemsSuccess
+  | RemoveShopItem;
