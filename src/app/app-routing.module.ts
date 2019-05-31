@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GameGuard } from '@app/game.guard';
+import { GameGuard, PlayerGuard } from '@app/game.guard';
 import { CashShopView, InfoView, ShopView, StartView } from '@app/views';
 
 const routes: Routes = [
@@ -29,8 +29,7 @@ const routes: Routes = [
     path: "",
     component: StartView,
     data: { animation: "start" },
-    // canActivate: [GameGuard, PlayerGuard],
-    canActivate: [GameGuard],
+    canActivate: [GameGuard, PlayerGuard],
   },
   { path: "**", redirectTo: "/" },
 ];

@@ -28,8 +28,8 @@ export function gameReducer(
       const items = action.payload;
       return {
         ...state,
-        itemsLoaded: true,
         items,
+        itemsLoaded: true,
       };
     }
 

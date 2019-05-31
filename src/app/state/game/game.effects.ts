@@ -1,4 +1,11 @@
-import * as gameActions from './game.actions';
+import {
+  LOAD_ALL_ITEMS,
+  LOAD_CASH_SHOP_ITEMS,
+  LOAD_SHOP_ITEMS,
+  LoadAllItemsSuccess,
+  LoadCashShopItemsSuccess,
+  LoadShopItemsSuccess,
+} from './game.actions';
 import { Injectable } from '@angular/core';
 import { HttpService } from '@app/http.service';
 import { Item } from '@app/models';
@@ -12,36 +19,25 @@ export class GameEffects {
 
   @Effect()
   loadAllItems$ = this._actions$.pipe(
-    ofType(gameActions.LOAD_ALL_ITEMS),
-    switchMap(_ => {
-      return this._httpService.getItems().pipe(
-        map((items: Item[]) => new gameActions.LoadAllItemsSuccess(items)),
-        catchError(() => of({ type: "[Game] Items loaded error." })),
-      );
-    }),
+    ofType(LOAD_ALL_ITEMS),
+    switchMap(_ => this._httpService.getItems()),
+    map((items: Item[]) => new LoadAllItemsSuccess(items)),
+    catchError(() => of({ type: "[Game] Items loaded error." })),
   );
 
   @Effect()
   loadShopItems$ = this._actions$.pipe(
-    ofType(gameActions.LOAD_SHOP_ITEMS),
-    switchMap(_ => {
-      return this._httpService.getShopItems().pipe(
-        map((items: number[]) => new gameActions.LoadShopItemsSuccess(items)),
-        catchError(() => of({ type: "[Game] Items loaded error." })),
-      );
-    }),
+    ofType(LOAD_SHOP_ITEMS),
+    switchMap(_ => this._httpService.getShopItems()),
+    map((items: number[]) => new LoadShopItemsSuccess(items)),
+    catchError(() => of({ type: "[Game] Items loaded error." })),
   );
 
   @Effect()
   loadCashShopItems$ = this._actions$.pipe(
-    ofType(gameActions.LOAD_CASH_SHOP_ITEMS),
-    switchMap(_ => {
-      return this._httpService.getCashShopItems().pipe(
-        map(
-          (items: number[]) => new gameActions.LoadCashShopItemsSuccess(items),
-        ),
-        catchError(() => of({ type: "[Game] Items loaded error." })),
-      );
-    }),
+    ofType(LOAD_CASH_SHOP_ITEMS),
+    switchMap(_ => this._httpService.getCashShopItems()),
+    map((items: number[]) => new LoadCashShopItemsSuccess(items)),
+    catchError(() => of({ type: "[Game] Items loaded error." })),
   );
 }

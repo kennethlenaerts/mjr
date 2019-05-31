@@ -1,14 +1,6 @@
 import { Player } from '@app/models';
 import { Action } from '@ngrx/store';
 
-loadPlayerStats;
-updateHealth;
-removeItem;
-addItem;
-addGold;
-removeGold;
-removeGem;
-
 export const LOAD_PLAYER_STATS = "[Player] Load player stats";
 export const LOAD_PLAYER_STATS_SUCCESS = "[Player] Load player stats success";
 
@@ -62,3 +54,13 @@ export class RemoveGem implements Action {
   readonly type = REMOVE_GEM;
   constructor(public payload: number) {}
 }
+
+export type PlayerAction =
+  | LoadPlayerStats
+  | LoadPlayerStatsSuccess
+  | UpdateHealth
+  | RemoveItem
+  | AddItem
+  | AddGold
+  | RemoveGold
+  | RemoveGem;
