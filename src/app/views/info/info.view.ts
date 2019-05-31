@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
 import { Item, ItemType, Player } from '@app/models';
-import { PlayerState } from '@app/player.state';
-import { Emittable, Emitter } from '@ngxs-labs/emitter';
-import { Select } from '@ngxs/store';
+import { State } from '@app/state';
+import {
+  RemovePlayerItem,
+  selectPlayerItems,
+  selectPlayerOpenItemSlots,
+  selectPlayerStats,
+  UpdatePlayerHealth,
+} from '@app/state/player';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,7 +18,7 @@ import { Observable } from 'rxjs';
         <app-user-stats [playerStats]="playerStats$ | async"></app-user-stats>
         <app-inventory
           [items]="playerItems$ | async"
-          [openItemSlots]="playerOpenItemSlots | async"
+          [openItemSlots]="playerOpenItemSlots$ | async"
           [maxItemSlots]="(playerStats$ | async)?.maxItemSlots"
           (itemClick)="itemClick($event)"
         ></app-inventory>
@@ -24,17 +30,20 @@ import { Observable } from 'rxjs';
 export class InfoView {
   ItemTypeEnum: typeof ItemType = ItemType;
 
-  @Select(PlayerState.items) playerItems$: Observable<Item[]>;
-  @Select(PlayerState.openItemSlots) playerOpenItemSlots: Observable<number>;
-  @Select(PlayerState.stats) playerStats$: Observable<Partial<Player>>;
+  playerItems$: Observable<Item[]>;
+  playerOpenItemSlots$: Observable<number>;
+  playerStats$: Observable<Partial<Player>>;
 
-  @Emitter(PlayerState.removeItem) removePlayerItem: Emittable<number>;
-  @Emitter(PlayerState.updateHealth) updatePlayerHealth: Emittable<number>;
+  constructor(private _store: Store<State>) {
+    this.playerItems$ = _store.select(selectPlayerItems);
+    this.playerOpenItemSlots$ = _store.select(selectPlayerOpenItemSlots);
+    this.playerStats$ = _store.select(selectPlayerStats);
+  }
 
   itemClick(item: Item): void {
     if (item.type == this.ItemTypeEnum.health) {
-      this.updatePlayerHealth.emit(item.healthPoints);
-      this.removePlayerItem.emit(item.id);
+      this._store.dispatch(new UpdatePlayerHealth(item.healthPoints));
+      this._store.dispatch(new RemovePlayerItem(item.id));
     }
   }
 }
