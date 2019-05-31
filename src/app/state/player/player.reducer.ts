@@ -40,7 +40,6 @@ export function playerReducer(
     }
 
     case LOAD_PLAYER_STATS_SUCCESS: {
-      console.log("hi");
       const player: Player = action.payload;
       return {
         ...state,

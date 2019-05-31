@@ -1,9 +1,9 @@
+import { AddPlayerGold, RemovePlayerGem } from './../../state/player/player.actions';
 import { Component } from '@angular/core';
-import { GameState } from '@app/game.state';
 import { Item, Type } from '@app/models';
-import { PlayerState } from '@app/player.state';
-import { Emittable, Emitter } from '@ngxs-labs/emitter';
-import { Select } from '@ngxs/store';
+import { State } from '@app/state';
+import { selectCashShopItems } from '@app/state/game/game.selectors';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -22,13 +22,14 @@ export class CashShopView {
   items: string[];
   TypeEnum: typeof Type = Type;
 
-  @Select(GameState.cashShopItems) cashShopItems$: Observable<Item[]>;
+  cashShopItems$: Observable<Item[]>;
 
-  @Emitter(PlayerState.addGold) playerAddGold: Emittable<number>;
-  @Emitter(PlayerState.removeGem) playerRemoveGem: Emittable<number>;
+  constructor(private _store: Store<State>) {
+    this.cashShopItems$ = _store.select(selectCashShopItems);
+  }
 
   shopItemClick(item: Item): void {
-    this.playerAddGold.emit(item.worth);
-    this.playerRemoveGem.emit(item.value);
+    this._store.dispatch(new AddPlayerGold(item.worth));
+    this._store.dispatch(new RemovePlayerGem(item.value));
   }
 }

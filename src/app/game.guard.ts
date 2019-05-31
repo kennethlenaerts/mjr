@@ -1,7 +1,7 @@
 import { LoadCashShopItems, LoadShopItems } from './state/game/game.actions';
 import { LoadPlayerStats } from './state/player/player.actions';
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { State } from '@app/state';
 import { LoadAllItems, selectItemsLoaded } from '@app/state/game';
 import { selectPlayerLoaded } from '@app/state/player';
@@ -45,21 +45,19 @@ export class PlayerGuard implements CanActivate {
   }
 }
 
-// @Injectable({ providedIn: "root" })
-// export class ItemsLoadedGuard implements CanActivate {
-//   @Select(GameState.itemsLoaded) itemsLoaded$: Observable<boolean>;
+@Injectable({ providedIn: "root" })
+export class ItemsLoadedGuard implements CanActivate {
+  constructor(private _store: Store<State>, private _router: Router) {}
 
-//   constructor(private store: Store) {}
-
-//   canActivate(): Observable<boolean> {
-//     return this.itemsLoaded$.pipe(
-//       switchMap(itemsLoaded => {
-//         if (!itemsLoaded) {
-//           this.store.dispatch(new Navigate(["/"]));
-//         }
-//         return of(true);
-//       }),
-//       catchError(() => of(false)),
-//     );
-//   }
-// }
+  canActivate(): Observable<boolean> {
+    return this._store.select(selectItemsLoaded).pipe(
+      switchMap(itemsLoaded => {
+        if (!itemsLoaded) {
+          this._router.navigate(["/"]);
+        }
+        return of(true);
+      }),
+      catchError(() => of(false)),
+    );
+  }
+}
