@@ -13,3 +13,6 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 export const effects: any[] = [PlayerEffects, GameEffects];
+
+export * from "./game";
+export * from "./player";

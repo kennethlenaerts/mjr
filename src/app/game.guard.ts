@@ -1,10 +1,14 @@
-import { LoadCashShopItems, LoadShopItems } from './state/game/game.actions';
-import { LoadPlayerStats } from './state/player/player.actions';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { State } from '@app/state';
-import { LoadAllItems, selectItemsLoaded } from '@app/state/game';
-import { selectPlayerLoaded } from '@app/state/player';
+import {
+  LoadAllItems,
+  LoadCashShopItems,
+  LoadPlayerStats,
+  LoadShopItems,
+  selectItemsLoaded,
+  selectPlayerLoaded,
+  State,
+} from '@app/state';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, filter, switchMap, take, tap } from 'rxjs/operators';

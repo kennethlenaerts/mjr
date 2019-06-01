@@ -1,10 +1,9 @@
-import { HttpService } from './http.service';
-import { selectPlayerStats } from './state/player';
 import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HttpService } from '@app/http.service';
 import { Player } from '@app/models';
 import { slider } from '@app/route-animations';
-import { State } from '@app/state';
+import { selectPlayerStats, State } from '@app/state';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';

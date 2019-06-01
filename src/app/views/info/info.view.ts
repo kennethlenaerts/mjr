@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Item, ItemType, Player } from '@app/models';
-import { State } from '@app/state';
 import {
   RemovePlayerItem,
   selectPlayerItems,
   selectPlayerOpenItemSlots,
   selectPlayerStats,
+  State,
   UpdatePlayerHealth,
-} from '@app/state/player';
+} from '@app/state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 

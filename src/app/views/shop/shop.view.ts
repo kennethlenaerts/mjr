@@ -1,14 +1,16 @@
-import { selectPlayerOpenItemSlots, selectPlayerStats } from './../../state/player/player.selector';
 import { Component } from '@angular/core';
-import { GameState } from '@app/game.state';
 import { Item, Player } from '@app/models';
-import { PlayerState } from '@app/player.state';
-import { State } from '@app/state';
-import { RemoveShopItem } from '@app/state/game';
-import { selectShopItems } from '@app/state/game/game.selectors';
-import { AddPlayerItem, RemovePlayerGold, selectPlayerItems } from '@app/state/player';
+import {
+  AddPlayerItem,
+  RemovePlayerGold,
+  RemoveShopItem,
+  selectPlayerItems,
+  selectPlayerOpenItemSlots,
+  selectPlayerStats,
+  selectShopItems,
+  State,
+} from '@app/state';
 import { Store } from '@ngrx/store';
-import { Emittable, Emitter } from '@ngxs-labs/emitter';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -35,10 +37,6 @@ export class ShopView {
   playerItems$: Observable<Item[]>;
   playerOpenItemSlots$: Observable<number>;
   playerStats$: Observable<Partial<Player>>;
-
-  @Emitter(GameState.removeShopItem) removeShopItem: Emittable<number>;
-  @Emitter(PlayerState.addItem) addPlayerItem: Emittable<number>;
-  @Emitter(PlayerState.removeGold) removePlayerGold: Emittable<number>;
 
   constructor(private _store: Store<State>) {
     this.shopItems$ = _store.select(selectShopItems);

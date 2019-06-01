@@ -1,8 +1,6 @@
-import { AddPlayerGold, RemovePlayerGem } from './../../state/player/player.actions';
 import { Component } from '@angular/core';
 import { Item, Type } from '@app/models';
-import { State } from '@app/state';
-import { selectCashShopItems } from '@app/state/game/game.selectors';
+import { AddPlayerGold, RemovePlayerGem, selectCashShopItems, State } from '@app/state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
