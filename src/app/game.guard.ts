@@ -1,8 +1,8 @@
-import { PlayerState } from './player.state';
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { GameState } from '@app/game.state';
 import { Player } from '@app/models';
+import { PlayerState } from '@app/player.state';
 import { Emittable, Emitter } from '@ngxs-labs/emitter';
 import { Navigate } from '@ngxs/router-plugin';
 import { Select, Store } from '@ngxs/store';
