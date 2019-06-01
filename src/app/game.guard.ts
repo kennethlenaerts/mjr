@@ -12,7 +12,7 @@ import { catchError, switchMap } from 'rxjs/operators';
 @Injectable({ providedIn: "root" })
 export class GameGuard implements CanActivate {
   @Emitter(GameState.loadAllItems)
-  public loadAllItems: Emittable<number>;
+  loadAllItems: Emittable<number>;
 
   canActivate(): Observable<boolean> {
     return this.loadAllItems.emit().pipe(
@@ -25,7 +25,7 @@ export class GameGuard implements CanActivate {
 @Injectable({ providedIn: "root" })
 export class PlayerGuard implements CanActivate {
   @Emitter(PlayerState.loadPlayerStats)
-  public loadPlayerStats: Emittable<Player>;
+  loadPlayerStats: Emittable<Player>;
 
   canActivate(): Observable<boolean> {
     return this.loadPlayerStats.emit().pipe(
