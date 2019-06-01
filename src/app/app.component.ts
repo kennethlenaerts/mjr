@@ -47,6 +47,6 @@ export class AppComponent {
     this._httpService
       .resetDb()
       .pipe(take(1))
-      .subscribe();
+      .subscribe(_ => location.reload());
   }
 }
